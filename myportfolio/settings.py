@@ -23,7 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # =========================
 SECRET_KEY = 'django-insecure-iua%_)7nh^s0^9@&6d-!@o8jg9&6v^ixx=(0^vh+lhy02%a71v'
 DEBUG = False
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'glendportfolio.com', 
+    'www.glendportfolio.com', 
+    'portfolio101-t9zt.onrender.com', 
+    'localhost', 
+    '127.0.0.1'
+]
 
 
 # =========================
