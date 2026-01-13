@@ -1,0 +1,336 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;600;700&family=Orbitron:wght@400;600;800&family=Oxanium:wght@400;700&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+
+
+
+ <nav>
+  <div class="logo">
+    <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo" />
+  </div>
+ <div class="nav-links">
+    <a href="{% url 'portfolio:index' %}#home">HOME</a>
+    <a href="{% url 'portfolio:index' %}#about">ABOUT</a>
+    <a href="{% url 'portfolio:index' %}#tools">TOOLS</a> 
+    <a href="{% url 'portfolio:index' %}#services">SERVICES</a>
+    <a href="{% url 'portfolio:portfolio' %}">PORTFOLIO</a>
+    <a href="{% url 'portfolio:index' %}#contact">CONTACT</a>
+</div>
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+
+
+ <div id="smoke"></div>
+ 
+    <!--hobby-->
+<section id="video-book" class="video-book">
+  <div class="video-details" id="videoDetails">
+    <h2>Select a Video 📖</h2>
+    <p>Hover or click on a thumbnail to see details here.</p>
+  </div>
+
+  <div class="video-thumbnails">
+    <div class="video-thumb" 
+      data-title="🔥  Elementor WordPress" 
+      data-desc="Tutorial for Beginners 2025 - Step by Step" 
+      data-link="https://www.youtube.com/watch?v=QaH1xpoX5C4">
+    </div>
+
+    <div class="video-thumb" 
+      data-title="🚀 WordPress tutorial" 
+      data-desc="Tutorial for Beginners 2025 - Step by Step" 
+      data-link="https://www.youtube.com/watch?v=zd5_MN-6kqs">
+    </div>
+
+    <div class="video-thumb" 
+      data-title="📖 AI no Coding journey and coding" 
+      data-desc="The AI Web Builder That Outperforms WordPress" 
+      data-link="https://www.youtube.com/watch?v=J-sJtoIp_oM">
+    </div>
+
+    <div class="video-thumb" 
+      data-title="💡 Unreal Engine Tech tips" 
+      data-desc="Sharing some useful tech tips." 
+      data-link="https://www.youtube.com/watch?v=1cfPiofNy-U&list=PLGEDpELN0zHDiStehu4bleZ7KVhOaGAUK">
+    </div>
+
+    <div class="video-thumb" 
+      data-title="🎬 Beginner to Pro" 
+      data-desc="HTML & CSS Full Course - Build a Website Tutorial" 
+      data-link="https://www.youtube.com/watch?v=G3e-cpL7ofc&t=2766s">
+    </div>
+
+    <div class="video-thumb" 
+      data-title="🎯 Tips for beginners" 
+      data-desc="Some advice for new coders." 
+      data-link="https://www.youtube.com/watch?v=Rz6SMgKrSYE&list=PL0eyrZgxdwhy7Woo2VRRDMmTXXYT_iaYO">
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Behind Story Section 
+ <section class="video-section">
+  <div class="video-card">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+              title="YouTube video" frameborder="0" 
+              allowfullscreen>
+      </iframe>
+    </div>
+    <div class="video-message">
+      📖 This video changed the way I see coding.  
+      Hover to explore more insights!
+    </div>
+  </div>
+</section>-->
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ===============================
+  // STATIC SOUNDS
+  // ===============================
+  const clickSound = new Audio("{% static 'assets/sounds/click.mp3' %}");
+  const hoverSound = new Audio("{% static 'assets/sounds/hover.mp3' %}");
+
+  // ===============================
+  // Mobile Navigation Toggle
+  // ===============================
+  const navSlide = () => {
+    const burger = document.querySelector(".burger");
+    const nav = document.querySelector(".nav-links");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    if (!burger || !nav) return;
+
+    burger.addEventListener("click", () => {
+      nav.classList.toggle("nav-active");
+      burger.classList.toggle("toggle");
+
+      navLinks.forEach((link, index) => {
+        link.style.animation = link.style.animation
+          ? ""
+          : `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+      });
+    });
+  };
+
+  // ===============================
+  // Video Book Section
+  // ===============================
+  const thumbs = document.querySelectorAll(".video-thumb");
+  const details = document.getElementById("videoDetails");
+
+  thumbs.forEach(thumb => {
+    const link = thumb.dataset.link;
+    const url = new URL(link);
+    const videoId = url.searchParams.get("v");
+
+    // Show YouTube thumbnail as preview
+    thumb.innerHTML = `<img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${thumb.dataset.title}">`;
+
+    // Hover → show preview in details
+    thumb.addEventListener("mouseenter", () => {
+      details.innerHTML = `
+        <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="${thumb.dataset.title}">
+        <h2>${thumb.dataset.title}</h2>
+        <p>${thumb.dataset.desc}</p>
+      `;
+    });
+
+    // Click → load playable video
+    thumb.addEventListener("click", () => {
+      details.innerHTML = `
+        <h2>${thumb.dataset.title}</h2>
+        <p>${thumb.dataset.desc}</p>
+        <div class="video-embed">
+          <iframe width="100%" height="315"
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+    });
+  });
+
+
+
+  
+
+  // ===============================
+  // Animate Experience Items
+  // ===============================
+  const animateExperienceItems = () => {
+    const experienceItems = document.querySelectorAll(".experience-item");
+    setTimeout(() => {
+      experienceItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add("animate");
+        }, index * 200);
+      });
+    }, 8000); // Start after 8 seconds
+  };
+
+  // ===============================
+  // Experience Toggle with Sounds
+  // ===============================
+  const experienceToggle = () => {
+    const expItems = document.querySelectorAll(".experience-item");
+
+    expItems.forEach(item => {
+      item.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      });
+
+      item.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+
+        const expType = item.dataset.exp;
+        const expSection = document.getElementById(`experience-${expType}`);
+
+        document.querySelectorAll(".experience-detail").forEach(section => {
+          section.classList.remove("active");
+        });
+
+        if (expSection) {
+          expSection.classList.add("active");
+          expSection.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  };
+
+  // ===============================
+  // Smooth Scroll for Anchors
+  // ===============================
+  const smoothScrollAnchors = () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  };
+
+  // ===============================
+  // Button & Link Sounds
+  // ===============================
+  const applyButtonSounds = () => {
+    const buttons = document.querySelectorAll(
+      "button, a, .btn, .btn-primary, .btn-secondary"
+    );
+
+    buttons.forEach(btn => {
+      btn.addEventListener("mouseenter", () => {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      });
+
+      btn.addEventListener("click", () => {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      });
+    });
+  };
+
+  // ===============================
+  // Workstation Videos Fullscreen
+  // ===============================
+  const videos = document.querySelectorAll('.video-box video');
+  videos.forEach(video => {
+    video.addEventListener('click', () => {
+      if (video.requestFullscreen) video.requestFullscreen();
+      else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+      else if (video.msRequestFullscreen) video.msRequestFullscreen();
+    });
+  });
+
+  // ===============================
+  // Smokey Cursor Effect
+  // ===============================
+  document.addEventListener("mousemove", e => {
+    const smoke = document.getElementById("smoke");
+    if (!smoke) return;
+
+    const particle = document.createElement("div");
+    particle.className = "smoke-particle";
+
+    const size = Math.random() * 20 + 10;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+
+    const offsetX = (Math.random() - 0.5) * 20;
+    const offsetY = (Math.random() - 0.5) * 10;
+    particle.style.left = `${e.clientX - size / 2}px`;
+    particle.style.top = `${e.clientY - size / 2}px`;
+    particle.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+
+    smoke.appendChild(particle);
+
+    setTimeout(() => {
+      smoke.removeChild(particle);
+    }, 1500);
+  });
+
+  // ===============================
+  // Glass Effect Mouse Tracking
+  // ===============================
+  const leftContent = document.querySelector('.left-splash1 .left-content1');
+  if (leftContent) {
+    leftContent.addEventListener('mousemove', e => {
+      const rect = leftContent.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      leftContent.style.setProperty('--mouse-x', x + '%');
+      leftContent.style.setProperty('--mouse-y', y + '%');
+    });
+  }
+
+  // ===============================
+  // INIT
+  // ===============================
+  navSlide();
+  experienceToggle();
+  applyButtonSounds();
+  animateExperienceItems();
+  smoothScrollAnchors();
+
+});
+</script>
+
+
+
+</body>
+</html>

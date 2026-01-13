@@ -1,0 +1,1446 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;600;700&family=Orbitron:wght@400;600;800&family=Oxanium:wght@400;700&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.31/build/spline-viewer.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{% static 'javascript/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{% static 'css/portfolio.css' %}" />
+
+  </head>
+  <body>
+      <div id="smoke"></div>
+
+      <nav>
+  <div class="logo">
+    <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo" />
+  </div>
+  <div class="nav-links">
+   <a href="{% url 'portfolio:index' %}#home">HOME</a>
+<a href="{% url 'portfolio:index' %}#about">ABOUT</a>
+<a href="{% url 'portfolio:index' %}#tools">TOOLS</a>
+<a href="{% url 'portfolio:index' %}#services">SERVICES</a>
+<a href="{% url 'portfolio:portfolio' %}">PORTFOLIO</a>
+<a href="{% url 'portfolio:index' %}#contact">CONTACT</a>
+  </div>
+  <div class="burger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</nav>
+    <!-- Scroll Content -->
+  <div class="scroll-content">
+
+
+
+
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <spline-viewer 
+    url="https://prod.spline.design/rkycyUzeSCXGI7HB/scene.splinecode" 
+    class="hero-spline">
+  </spline-viewer>
+
+
+  <!-- Small video bottom right -->
+  <video class="hero-video1" width="300" height="200" autoplay muted loop>
+    <source src="{% static 'vidios-images/3d-editing.mp4' %}" type="video/mp4" />
+  </video>
+</section>
+
+
+
+
+
+<!--Playstation section style-->
+<section id="projects">
+  <spline-viewer 
+    url="https://prod.spline.design/ZQcBN2Lnw90VghQq/scene.splinecode" 
+    class="hero-spline3">
+  </spline-viewer>
+
+  <div class="container">
+    <div class="particles"></div>
+    <div class="sound-indicator">🔊</div>
+
+    <div class="title-screen">
+      <h1>Launching Project Showcase...</h1>
+      <div class="loading">Initializing Portfolio Interface</div>
+    </div>
+
+    <div class="main-interface">
+      <div class="projects-slider">
+        <div class="slider-container">
+          <div class="slider-track">
+            <button class="project-card active" data-project="0">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/sampleLandingPage.png' %}" alt="landing page Sample Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">UI/UX Design Concept</div>
+                <div class="project-type">Figma</div>
+              </div>
+            </button>
+
+            <button class="project-card" data-project="1">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/ourblog.png' %}" alt="E-Commerce Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">High-Fidelity Wireframe</div>
+                <div class="project-type">Figma</div>
+              </div>
+            </button> 
+
+            <button class="project-card" data-project="2">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/Portfolio.png' %}" alt="E-Commerce Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Creative Portfolio</div>
+                <div class="project-type">Gutenberg</div>
+              </div>
+            </button>
+
+            <button class="project-card" data-project="3">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/Construction Website.png' %}" alt="Construction Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Construction Landing</div>
+                <div class="project-type">Frontend Development</div>
+              </div>
+            </button>
+
+            <button class="project-card" data-project="4">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/Social Media Design Portfolio.png' %}" alt="Mobile App Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Visual Content Strategy</div>
+                <div class="project-type">Elementor</div>
+              </div>
+            </button>
+
+            <button class="project-card" data-project="5">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/e-commerce.png' %}" alt="Creative Portfolio Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">E-Commerce Platform</div>
+                <div class="project-type">Full Stack Development</div>
+              </div>
+            </button>
+
+            <button class="project-card" data-project="6">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/dashboard.png' %}" alt="Business Dashboard Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Analytics & BI Dashboard</div>
+                <div class="project-type">Data Visualization</div>
+              </div>
+            </button>
+
+            <button class="project-card" data-project="7">
+              <div class="project-mockup">
+                <img class="pimage" src="{% static 'vidios-images/saas.png' %}" alt="Startup Landing Icon" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Software as a Service</div>
+                <div class="project-type">WordPress</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-hints">
+        <span class="nav-arrow">←</span>
+        <span>Use arrow keys to navigate</span>
+        <span class="nav-arrow">→</span>
+      </div>
+
+      <div class="details-panel">
+        <div class="project-details">
+          <h2 class="details-title">E-Commerce Platform</h2>
+          <p class="details-description">
+            Full-featured online shopping platform with advanced cart functionality, payment integration, and responsive design optimized for all devices.
+          </p>
+          <div class="tech-stack"></div>
+        </div>
+        <div class="action-buttons">
+          <a href="#" target="_blank" class="view-button">View Site</a>
+          <a href="#" target="_blank" class="demo-button">Live Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="signature">Built by Glenell Diel</div>
+  </div>
+</section>
+
+
+     <!-- Hero Section -->
+    <section id="hero" class="hero">
+   
+<iframe src='https://my.spline.design/nexbotrobotcharacterconcept-Fzyb0E3J5FVCzp4eTRbY7D0m/' 
+frameborder='0'  class="hero-spline2"></iframe>
+
+ 
+      <div class="hero-content">
+<!-- 3D Rotating Carousel -->
+<div id="carouselContainer" class="carousel-container animate-on-load">
+  <div id="carousel" class="carousel">
+    <div class="item" style="--i: 0">
+      <img src="{% static 'vidios-images/IMAG1 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 1">
+      <img src="{% static 'vidios-images/IMAG2 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 2">
+      <img src="{% static 'vidios-images/IMAG3 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 3">
+      <img src="{% static 'vidios-images/IMAG4 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 4">
+      <img src="{% static 'vidios-images/IMAG5 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 5">
+      <img src="{% static 'vidios-images/IMAG6 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 6">
+      <img src="{% static 'vidios-images/IMAG7 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 7">
+      <img src="{% static 'vidios-images/IMAG8 ROTATE.png' %}" loading="eager" />
+
+    </div>
+    <div class="item" style="--i: 8">
+      <img src="{% static 'vidios-images/IMAG9 ROTATE.png' %}" loading="eager" />
+
+    </div>
+
+    
+
+  </div>
+
+     
+</div>
+
+
+
+<!-- Fullscreen overlay -->
+<div class="fullscreen-overlay" id="fullscreenOverlay">
+  <!-- Close Button -->
+  <span class="close-btn" onclick="closeFullscreen()">×</span>
+
+  <!-- Fullscreen Image -->
+  <img id="fullscreenImage" src="" alt="Fullscreen" />
+
+  <!-- Navigation Buttons -->
+  <button class="prev-btn" onclick="showPrevImage()">❮</button>
+  <button class="next-btn" onclick="showNextImage()">❯</button>
+</div>
+
+     
+       
+<!-- <p class="hero-subtitle">
+  Multidisciplinary Digital Designer & <br />
+  <span class="arrow-line-img">
+    Developer
+    <img src="vidios-images/arrow.png" alt="arrow" class="arrow-img" />
+  </span>
+</p>-->
+
+        <div class="chart-container">
+          <canvas id="myChart" width="400px" height="300px" ></canvas>
+        </div>
+      </div>
+
+
+      <!-- Small video bottom right -->
+  <video class="hero-video" width="400" height="300" autoplay muted loop>
+    <source src="{% static 'vidios-images/3d-sample.mp4' %}" type="video/mp4" />
+
+  </video>
+    </section>
+
+    <!-- My Work Section -->
+<section class="section">
+  <h2 class="section-title">FEATURED TRANSFORMATIONS</h2>
+  <P>A snapshot of what I build.</P>
+  <div class="work-grid">
+
+    <!-- Project 1 -->
+    <button type="button" class="work-card">
+      <h3>Business Landing Page</h3>
+      <p>
+        A sleek, mobile-first landing page for a local business, focused on
+        lead generation, SEO, and visual identity.
+      </p>
+      <div class="work-tech">
+        <span class="tech-tag">HTML5</span>
+        <span class="tech-tag">CSS3</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">Figma</span>
+      </div>
+    </button>
+
+    <!-- Project 2 -->
+    <button type="button" class="work-card">
+      <h3>Corporate Website</h3>
+      <p>
+        A CMS-powered website with clean UI/UX and dynamic content management
+        for internal teams and clients.
+      </p>
+      <div class="work-tech">
+        <span class="tech-tag">WordPress</span>
+        <span class="tech-tag">Breakdance</span>
+        <span class="tech-tag">SEO</span>
+        <span class="tech-tag">Canva</span>
+      </div>
+    </button>
+
+    <!-- Project 3 -->
+    <button type="button" class="work-card">
+      <h3>UI Design System</h3>
+      <p>
+        Built a consistent and scalable design system for web and mobile apps,
+        including typography, spacing, and components.
+      </p>
+      <div class="work-tech">
+        <span class="tech-tag">Figma</span>
+        <span class="tech-tag">Design Tokens</span>
+        <span class="tech-tag">Prototyping</span>
+        <span class="tech-tag">UX</span>
+      </div>
+    </button>
+
+    <!-- Project 4 -->
+    <button type="button" class="work-card">
+      <h3>Freelance Portfolio Site</h3>
+      <p>
+        A responsive portfolio website showcasing interactive animations,
+        services, and visual branding.
+      </p>
+      <div class="work-tech">
+        <span class="tech-tag">HTML</span>
+        <span class="tech-tag">CSS</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">AOS.js</span>
+      </div>
+    </button>
+
+    <!-- Project 5 -->
+    <button type="button" class="work-card">
+      <h3>Custom WP Theme</h3>
+      <p>
+        Developed a lightweight and fully custom WordPress theme with
+        accessibility, responsive design, and reusable components.
+      </p>
+      <div class="work-tech">
+        <span class="tech-tag">WordPress</span>
+        <span class="tech-tag">PHP</span>
+        <span class="tech-tag">ACF</span>
+        <span class="tech-tag">Responsive Design</span>
+      </div>
+    </button>
+
+    <!-- Project 6 -->
+    <button type="button" class="work-card">
+      <h3>E-Commerce UI Revamp</h3>
+      <p>
+        Redesigned a cluttered e-commerce store to improve usability,
+        modernize branding, and increase conversions.
+      </p>
+      <div class="work-tech">
+        <span class="tech-tag">WooCommerce</span>
+        <span class="tech-tag">Photoshop</span>
+        <span class="tech-tag">UX Design</span>
+        <span class="tech-tag">Figma</span>
+      </div>
+    </button>
+
+  </div>
+</section>
+
+    <!-- Skills Section -->
+    <section id="expertise">
+  <h2 class="section-title">THE FORGE: TECHNICAL MASTERY</h2>
+  <div class="skills-grid">
+
+    <button class="skill-card" type="button">
+      <h3>Frontend Development</h3>
+      <div class="skill-tags">
+        <span class="skill-tag"><img src="{% static 'vidios-images/html.png' %}" />HTML</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/css-3.png' %}" alt="CSS" />CSS</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/java-script.png' %}" alt="JavaScript" />JavaScript</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/tailwind.png' %}" alt="Tailwind" />Tailwind</span>
+      </div>
+    </button>
+
+    <button class="skill-card" type="button">
+      <h3>Design Tools</h3>
+      <div class="skill-tags">
+        <span class="skill-tag"><img src="{% static 'vidios-images/Figma.png' %}" alt="Figma" />Figma</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/photoshop.png' %}" alt="Photoshop" />Photoshop</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/illustrator.png' %}" alt="Illustrator" />Illustrator</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/canva.png' %}" alt="Canva" />Canva</span>
+      </div>
+    </button>
+
+    <button class="skill-card" type="button">
+      <h3>Frameworks</h3>
+      <div class="skill-tags">
+        <span class="skill-tag"><img src="{% static 'vidios-images/react.png' %}" alt="React" />React</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/vite101.ico' %}" alt="Vite" />Vite</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/wordpress.png' %}" alt="WordPress" />WordPress</span>
+      </div>
+    </button>
+
+    <button class="skill-card" type="button">
+      <h3>Other Skills</h3>
+      <div class="skill-tags">
+        <span class="skill-tag"><img src="{% static 'vidios-images/git.png' %}" alt="Git" />Git</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/seo.png' %}" alt="SEO" />SEO</span>
+        <span class="skill-tag"><img src="{% static 'vidios-images/responsive.png' %}" alt="Responsive Design" />Responsive Design</span>
+      </div>
+    </button>
+
+  </div>
+</section>
+
+ 
+
+<!-- Certificates Section -->
+<section class="section">
+  <h2 class="section-title">PROVEN MILESTONES</h2>
+  <div class="certificates-grid">
+
+    <div class="certificate-card">
+      <h3>Designing for Social Media Engaging Visuals that Convert</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Designing for Social Media.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Designing for Social Media.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Effective Graphic Design for Advertising & Marketing</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Effective Graphic Design.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Effective Graphic Design.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Brand Identity Design Building Strong Visual Presence</h3>
+      <p class="certificate-issuer">VIBAL GROUP</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Brand Identity Design.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Brand Identity Design.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Creative Portfolio Building Stand Out as a Designer</h3>
+      <p class="certificate-issuer">VIBAL GROUP</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Creative Portfolio.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Creative Portfolio.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>UI UX Design Fundamentals for Graphic Designers</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/UI UX Design Fundamentals.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/UI UX Design Fundamentals.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Adobe Creative Suite Masterclass Photoshop & Design</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Adobe Creative Suite Masterclass.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Adobe Creative Suite Masterclass.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Color Theory in Action Designing with Purpose</h3>
+      <p class="certificate-issuer">VIBAL GROUP</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Color Theory in Action Designing.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Color Theory in Action Designing.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>Mastering Visual Storytelling Advanced Graphic Design</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Mastering Visual Storytelling.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Mastering Visual Storytelling.pdf')"> Download</button>
+      </div>
+    </div>
+
+    <div class="certificate-card">
+      <h3>The Art of Creative Branding from Concept of Execution</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/The Art of Creative Branding.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/The Art of Creative Branding.pdf')"> Download</button>
+      </div>
+    </div>
+
+
+    <div class="certificate-card">
+      <h3>Canva for Professionals Quick, Clean, Creative</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Canva for Professionals Quick.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Canva for Professionals Quick.pdf')"> Download</button>
+      </div>
+    </div>
+
+
+    <div class="certificate-card">
+      <h3>Mastering Computer Workstation Safety</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/Mastering-Computer-Workstation-Safety.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/Mastering-Computer-Workstation-Safety.pdf')"> Download</button>
+      </div>
+    </div>
+
+<div class="certificate-card">
+      <h3>C-Programming-Introduction</h3>
+      <p class="certificate-issuer">Alison</p>
+      <div class="certificate-buttons">
+        <button class="btn btn-primary" onclick="viewCertificate('/media/certificates/C-Programming-Introduction.pdf')">👁️ View</button>
+        <button class="btn btn-secondary" onclick="downloadCertificate('/media/certificates/C-Programming-Introduction.pdf')"> Download</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+   <!-- Download Section -->
+<section class="download-section" id="download">
+  <div class="section">
+    <h2 class="section-title">GET THE BLUEPRINT</h2>
+
+    <div class="download-buttons">
+      <div class="dropdown">
+        <button class="btn btn-primary download-btn">
+          <i class="ri-folder-shared-line"></i> ACCESS PROFESSIONAL DOSSIER <i class="ri-arrow-down-s-line"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="/media/cv/Glenell Diel-simple-cv.pdf" download>
+            <i class="ri-file-user-line"></i> EXECUTIVE SUMMARY (SIMPLE CV)
+          </a>
+          
+          <a href="/media/cv/Glenell Diel-ATS.pdf" download>
+            <i class="ri-robot-line"></i> ATS-OPTIMIZED BLUEPRINT (ONLINE CV)
+          </a>
+          
+          <a href="/media/cv/Black and White Simple Creative Graphic Designer Resume.pdf" download>
+            <i class="ri-palette-line"></i> VISUAL NARRATIVE (CREATIVE CV)
+          </a>
+          
+          <a href="diploma.pdf" download>
+            <i class="ri-medal-line"></i> ACADEMIC MILESTONE (DIPLOMA)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ 
+    
+     <!-- Footer -->
+<footer class="cyber-footer">
+  <div class="footer-top">
+    
+    <!-- Left: Logo + Social -->
+  <div class="footer-brand">
+  <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo" class="footer-logo">
+  
+  <div class="footer-social">
+    <a href="https://www.facebook.com/profile.php?id=61581834924653" target="_blank">
+      <img src="{% static 'icon/facebook.png' %}" alt="Facebook" class="social-icon">
+    </a>
+    <a href="https://linkedin.com" target="_blank">
+      <img src="{% static 'icon/linkedin.png' %}" alt="LinkedIn" class="social-icon">
+    </a>
+    <a href="https://github.com" target="_blank">
+      <img src="{% static 'icon/github.png' %}" alt="GitHub" class="social-icon">
+    </a>
+    <a href="mailto:your@email.com">
+      <img src="{% static 'icon/email.png' %}" alt="Email" class="social-icon">
+    </a>
+  </div>
+</div>
+
+
+    <!-- Center: 3 Message Blocks -->
+    <div class="footer-center">
+      <div class="footer-block">
+        <h4>Design</h4>
+        <p>Shaping seamless digital journeys through thoughtful UI/UX, interactive layouts, 
+      and bold creative visuals. Every pixel is crafted to connect users emotionally 
+      and guide them effortlessly.</p>
+      </div>
+      <div class="footer-block">
+        <h4>Development</h4>
+        <p>Transforming concepts into reality with clean, scalable code — 
+      from intuitive frontends and powerful backends to full-stack solutions. 
+      Bridging creativity and functionality to bring ideas alive.</p>
+      </div>
+      <div class="footer-block">
+        <h4>Tools</h4>
+        <p>Powered by <strong>Figma</strong> for design precision and 
+    <strong>Visual Studio Code</strong> for seamless coding.  
+    These tools shape every detail of my workflow — from creative concepts 
+    to functional digital experiences — ensuring both creativity 
+    and efficiency work hand in hand.</p>
+      </div>
+    </div>
+
+    <!-- Right: Message -->
+    <div class="footer-message">
+      <p><strong>Coffee ☕ and consistency</strong><br>is enough to startup your day.</p>
+    </div>
+  </div>
+
+  <!-- Bottom: Copyright -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 Glenell Diel. All rights reserved.</p>
+  </div>
+</footer>
+
+    <!-- Modal for Certificate View -->
+    <div id="certificateModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <h2 id="modalTitle">Certificate Title</h2>
+        <p id="modalDescription">
+          Certificate description and details will appear here.
+        </p>
+        <div style="margin-top: 2rem">
+          <button class="btn btn-primary" onclick="downloadFromModal()">
+            📥 Download Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <script>
+ // start of playstation animation
+
+const projects = [
+
+ {
+    title: "landing page Sample",
+    description: "Discover stories, insights, and ideas that shape our creative journey.",
+    tech: ["Figma + Canva", "Breakdance 2.0"],
+    view: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=148-107&t=86xon6zaaBbndWZI-1",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=148-107&t=86xon6zaaBbndWZI-1"
+  },
+
+ {
+    title: "Sample Design Bike store",
+    description: "Discover stories, insights, and ideas that shape our creative journey.",
+    tech: ["Figma + Canva", "Breakdance 2.0"],
+    view: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=148-1508&t=86xon6zaaBbndWZI-1",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=148-1508&t=86xon6zaaBbndWZI-1"
+  },
+  
+  {
+    title: "Creative Portfolio",
+    description: "Full-featured online shopping platform with advanced cart functionality, payment integration, and responsive design optimized for all devices.",
+    tech: ["WordPress + WooCommerce", "Gutenberg", "Stripe Payment Gateway", "Custom PHP and CSS for extended functionality"],
+    view: "https://dieltech09.com/",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=14-133&t=H1YY7Bij839AVW3t-1"
+  },
+  {
+    title: "Construction Landing",
+    description: "Professional construction company website with portfolio gallery, service listings, and contact forms for lead generation.",
+    tech: ["Elementor", "WordPress", "Custom CSS", "Astra Theme"],
+    view: "https://bmpsbuilders.dieltech09.com/",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=39-81&t=hEtYIfeyedvjNKSz-1"
+  },
+  {
+    title: "Social Media Design Portfolio",
+    description: "Crafted visually stunning social media content that connects brands with their audiences through bold design and storytelling.”",
+    tech: ["Figma", "Adobe PS", "Elementor", "Design Systems"],
+    view: "https://clportfolio.dieltech09.com/",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=104-167&t=hEtYIfeyedvjNKSz-1"
+  },
+  {
+    title: "E-Commerce Platform",
+    description: "Interactive and responsive portfolio website built using HTML, CSS, and WordPress Gutenberg editor.",
+    tech: ["WordPress", "Elementor", "Blocksy", "Custom CSS"],
+    view: "https://aa.dieltech09.com/",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=104-163&t=hEtYIfeyedvjNKSz-1"
+  },
+  {
+    title: "Business Dashboard",
+    description: "A responsive dashboard-style layout with analytics, data tables, and visual elements.",
+    tech: ["Laravel", "Blade.php", "Tailwind CSS", "JavaScript", "Readdy AI"],
+    view: "https://dashboard.dieltech09.com/",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=98-83&t=hEtYIfeyedvjNKSz-1"
+  },
+  {
+    title: "Cloud-Based SaaS Platform",
+    description: "A comprehensive business management solution featuring automated subscription billing, real-time sales analytics, and a centralized client portal for streamlined operations.",
+    tech: ["Stripe Gateway","SEO Optimization", "Custom CSS", "Kadence"],
+    view: "https://ads.dieltech09.com/",
+    demo: "https://www.figma.com/proto/4vV0GnVvmtKKaDEgwPVUtw/blog-sample?node-id=174-21&t=NkGHDGdYqOpsCP1C-1"
+  }
+];
+
+let currentProject = 0;
+const cards = document.querySelectorAll('.project-card');
+const sliderTrack = document.querySelector('.slider-track');
+const detailsTitle = document.querySelector('.details-title');
+const detailsDescription = document.querySelector('.details-description');
+const techStack = document.querySelector('.tech-stack');
+const viewBtn = document.querySelector('.view-button');
+const demoBtn = document.querySelector('.demo-button');
+
+function updateDetails() {
+  const project = projects[currentProject];
+  detailsTitle.textContent = project.title;
+  detailsDescription.textContent = project.description;
+
+  // update tech tags
+  techStack.innerHTML = '';
+  project.tech.forEach(tech => {
+    const tag = document.createElement('span');
+    tag.className = 'tech-tag';
+    tag.textContent = tech;
+    techStack.appendChild(tag);
+  });
+
+  // ✅ update links dynamically
+  viewBtn.href = project.view;
+  demoBtn.href = project.demo;
+}
+
+function updateSlider() {
+  cards.forEach(card => card.classList.remove('active'));
+  cards[currentProject].classList.add('active');
+
+  const cardWidth = 300 + 32;
+  const containerWidth = document.querySelector('.slider-container').offsetWidth;
+  const offset = (containerWidth / 2) - (cardWidth / 2) - (currentProject * cardWidth);
+
+  sliderTrack.style.transform = `translateX(${offset}px)`;
+
+  updateDetails();
+  playUISound();
+}
+
+// the rest of your JS (particles, sound, navigation, etc.) stays the same
+
+
+function navigateLeft() {
+    currentProject = currentProject > 0 ? currentProject - 1 : projects.length - 1;
+    updateSlider(); // sound included inside updateSlider
+}
+
+function navigateRight() {
+    currentProject = currentProject < projects.length - 1 ? currentProject + 1 : 0;
+    updateSlider(); // sound included inside updateSlider
+}
+
+function createParticles() {
+    const particlesContainer = document.querySelector('.particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Add sound effects simulation
+function playUISound() {
+    const soundIndicator = document.querySelector('.sound-indicator');
+    soundIndicator.style.color = '#ff3503';
+    soundIndicator.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        soundIndicator.style.transform = 'scale(1)';
+    }, 200);
+
+    const sound = new Audio("{% static 'assets/sounds/hover.mp3' %}"); // 🔊 your custom sound file path
+    sound.currentTime = 0;
+    sound.play();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    createParticles();
+    updateSlider();
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') {
+            navigateLeft();
+        } else if (e.key === 'ArrowRight') {
+            navigateRight();
+        }
+    });
+
+    // Click navigation
+    cards.forEach((card, index) => {
+        card.addEventListener('click', function () {
+            currentProject = index;
+            updateSlider();
+        });
+    });
+
+    // Button click effects
+    document.querySelectorAll('.view-button, .demo-button').forEach(button => {
+        button.addEventListener('click', function () {
+            playUISound();
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            ripple.style.left = '50%';
+            ripple.style.top = '50%';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.marginLeft = '-10px';
+            ripple.style.marginTop = '-10px';
+
+            this.appendChild(ripple);
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    setTimeout(() => playUISound(), 1000);
+    setTimeout(() => playUISound(), 3000);
+    setTimeout(() => playUISound(), 6000);
+
+    // setInterval(() => navigateRight(), 5000); // optional auto-slide
+});
+
+// Ripple animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+
+
+// end of playstation animation
+
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // ✅ Mobile Navigation Toggle
+        const navSlide = () => {
+          const burger = document.querySelector(".burger");
+          const nav = document.querySelector(".nav-links");
+          const navLinks = document.querySelectorAll(".nav-links a");
+
+          if (burger && nav) {
+            burger.addEventListener("click", () => {
+              nav.classList.toggle("nav-active");
+              burger.classList.toggle("toggle");
+
+              navLinks.forEach((link, index) => {
+                link.style.animation = link.style.animation
+                  ? ""
+                  : `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+              });
+            });
+          }
+        };
+        navSlide();
+        
+ window.onload = () => {
+    const carousel = document.getElementById("carousel");
+    const container = document.getElementById("carouselContainer");
+    const overlay = document.getElementById("fullscreenOverlay");
+    const fullImg = document.getElementById("fullscreenImage");
+    
+    let angle = 0;
+    let isDragging = false;
+    let startX = 0;
+    let animationRunning = true;
+    let autoRotateTimeout;
+
+    // 1. CAROUSEL CONTROL LOGIC
+    function stopAutoSpin() {
+        carousel.style.animation = "none";
+        animationRunning = false;
+        clearTimeout(autoRotateTimeout);
+    }
+
+    function resumeAutoSpin() {
+        if (!animationRunning) {
+            autoRotateTimeout = setTimeout(() => {
+                // Ibinabalik ang CSS animation pagkatapos ng 3 segundong idle
+                carousel.style.animation = "spin 20s linear infinite";
+                animationRunning = true;
+            }, 3000);
+        }
+    }
+
+    function handleDrag(delta) {
+        angle += delta * 0.4;
+        // Panatilihin ang rotateX(-16deg) habang nag-rotateY para hindi tumuwid ang carousel
+        carousel.style.transform = `rotateX(-16deg) rotateY(${angle}deg)`;
+    }
+
+    // --- Mouse Events ---
+    container.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        stopAutoSpin();
+        container.style.cursor = "grabbing";
+    });
+
+    document.addEventListener("mouseup", () => {
+        if (isDragging) {
+            isDragging = false;
+            container.style.cursor = "grab";
+            resumeAutoSpin();
+        }
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        const delta = e.clientX - startX;
+        startX = e.clientX;
+        handleDrag(delta);
+    });
+
+    // --- Touch Events (Mobile) ---
+    container.addEventListener("touchstart", (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        stopAutoSpin();
+    }, { passive: true });
+
+    document.addEventListener("touchend", () => {
+        isDragging = false;
+        resumeAutoSpin();
+    });
+
+    document.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        const delta = e.touches[0].clientX - startX;
+        startX = e.touches[0].clientX;
+        handleDrag(delta);
+    }, { passive: true });
+
+
+    // 2. FULLSCREEN VIEWER LOGIC
+    const images = Array.from(document.querySelectorAll(".item img"));
+    let currentImageIndex = 0;
+
+    // Click event para sa bawat image sa carousel
+    images.forEach((img, index) => {
+        img.addEventListener("click", (e) => {
+            // Pigilan ang drag event na mag-trigger ng click
+            if (isDragging) return; 
+            
+            currentImageIndex = index;
+            openFullscreen(img.src);
+        });
+    });
+
+    function openFullscreen(src) {
+        if (fullImg) fullImg.src = src;
+        if (overlay) overlay.style.display = "flex";
+        document.body.style.overflow = "hidden"; // I-lock ang scroll ng page
+    }
+
+    function closeFullscreen() {
+        if (overlay) overlay.style.display = "none";
+        document.body.style.overflow = "auto"; // I-unlock ang scroll
+    }
+
+    function showPrevImage(e) {
+        if (e) e.stopPropagation(); // Pigilan ang overlay click
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        fullImg.src = images[currentImageIndex].src;
+    }
+
+    function showNextImage(e) {
+        if (e) e.stopPropagation(); // Pigilan ang overlay click
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        fullImg.src = images[currentImageIndex].src;
+    }
+
+    // 3. KEYBOARD & WINDOW EXPOSURE
+    document.addEventListener("keydown", (e) => {
+        if (overlay && overlay.style.display === "flex") {
+            if (e.key === "Escape") closeFullscreen();
+            if (e.key === "ArrowLeft") showPrevImage();
+            if (e.key === "ArrowRight") showNextImage();
+        }
+    });
+
+    // I-expose sa window para gumana ang onclick="" sa HTML buttons
+    window.closeFullscreen = closeFullscreen;
+    window.showPrevImage = showPrevImage;
+    window.showNextImage = showNextImage;
+
+    
+};
+
+
+        // ✅ Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: "smooth" });
+            }
+          });
+        });
+
+         (function () {
+  const content = document.querySelector('.scroll-content');
+  let current = 0;
+  let target = 0;
+  const ease = 0.02; // adjust para mas mabagal o mas mabilis
+
+  function setBodyHeight() {
+    document.body.style.height =
+      Math.ceil(content.getBoundingClientRect().height) + 'px';
+  }
+
+  function onScroll() {
+    target = window.scrollY || window.pageYOffset;
+  }
+
+  function animate() {
+    current += (target - current) * ease;
+    const rounded = Math.round(current * 100) / 100;
+    content.style.transform = `translateY(${-rounded}px)`;
+    requestAnimationFrame(animate);
+  }
+
+  function init() {
+    setBodyHeight();
+    window.addEventListener('resize', setBodyHeight);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    requestAnimationFrame(animate);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+
+
+
+
+
+
+        // ✅ Button & Link Sounds
+        function applyButtonSounds() {
+  const clickSound = document.getElementById("click-sound");
+  const hoverSound = document.getElementById("hover-sound");
+
+  const buttons = document.querySelectorAll("button, a, .btn, .btn-primary, .btn-secondary");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("mouseenter", () => {
+      if (hoverSound) {
+        hoverSound.currentTime = 0;
+        hoverSound.play();
+      }
+    });
+
+    btn.addEventListener("click", () => {
+      if (clickSound) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      }
+    });
+  });
+}
+
+
+
+        // Scroll-based animation for tools
+       // const toolObserver = new IntersectionObserver(
+          //(entries, obs) => {
+           // entries.forEach((entry) => {
+              //if (entry.isIntersecting) {
+              //  entry.target.classList.add("animate");
+             //   obs.unobserve(entry.target);
+            //  }
+           // });
+         // },
+        //  { threshold: 0.2 }
+      //  );
+       // toolCards.forEach((card) => toolObserver.observe(card));
+
+    
+
+        // Click on close button
+document.getElementById("closeBtn").addEventListener("click", closeFullscreen);
+
+        
+        document.querySelectorAll(".gallery-container").forEach((container) => {
+          const overlay = container.nextElementSibling;
+          const content = overlay.querySelector(".fullscreen-content");
+          const closeBtn = overlay.querySelector(".close-button");
+          let timeoutId; // store timeout ID so we can clear it if needed
+
+          container.querySelectorAll(".gallery-item img").forEach((img) => {
+            img.addEventListener("click", () => {
+              content.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+              overlay.classList.add("active");
+
+              // Clear any previous timeout
+              clearTimeout(timeoutId);
+
+              // Set timeout to auto-close after 2 seconds
+              timeoutId = setTimeout(() => {
+                overlay.classList.remove("active");
+                content.innerHTML = "";
+              }, 2000); // 2000ms = 2 seconds
+            });
+          });
+
+          closeBtn.addEventListener("click", () => {
+            clearTimeout(timeoutId); // cancel auto-close when user manually closes
+            overlay.classList.remove("active");
+            content.innerHTML = "";
+          });
+        });
+
+        const multimediaVideo = document.getElementById("multimedia-video");
+
+        multimediaVideo.addEventListener("mouseenter", () => {
+          multimediaVideo.play();
+        });
+        multimediaVideo.addEventListener("mouseleave", () => {
+          multimediaVideo.pause();
+          multimediaVideo.currentTime = 0;
+        });
+        multimediaVideo.addEventListener("click", () => {
+          if (multimediaVideo.requestFullscreen) {
+            multimediaVideo.requestFullscreen();
+          } else if (multimediaVideo.webkitRequestFullscreen) {
+            multimediaVideo.webkitRequestFullscreen();
+          } else if (multimediaVideo.msRequestFullscreen) {
+            multimediaVideo.msRequestFullscreen();
+          }
+        });
+
+        // ✅ INIT
+        navSlide();
+        experienceToggle();
+        applyButtonSounds();
+        animateExperienceItems();
+      });
+
+      // Animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = "running";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document
+        .querySelectorAll(".work-card, .skill-category, .certificate-card")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Certificate modal functionality
+      let currentCertificate = "";
+
+      function viewCertificate(certName) {
+        const modal = document.getElementById("certificateModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+
+        currentCertificate = certName;
+        modalTitle.textContent = certName;
+        modalDescription.innerHTML = `
+                <strong>Certificate Details:</strong><br>
+                This certificate validates expertise in ${certName}.<br><br>
+                <strong>Skills Covered:</strong><br>
+                • Advanced concepts and practical applications<br>
+                • Industry best practices and standards<br>
+                • Hands-on project experience<br>
+                • Professional development milestone<br><br>
+                <em>Click download to save this certificate to your device.</em>
+            `;
+
+        modal.classList.add("show");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("certificateModal");
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
+
+      // ✅ Experience Toggle with Sounds
+      document.addEventListener("DOMContentLoaded", () => {
+        // Load audio
+        const clickSound = new Audio("{% static 'assets/sounds/click.mp3' %}");
+        const hoverSound = new Audio("{% static 'assets/sounds/hover.mp3' %}");
+
+        // Select all clickable elements
+        const soundElements = document.querySelectorAll(
+          "a, button, .btn, .btn-primary, .btn-secondary"
+        );
+
+        // Add hover and click events
+        soundElements.forEach((el) => {
+          el.addEventListener("mouseenter", () => {
+            hoverSound.currentTime = 0;
+            hoverSound.play();
+          });
+
+          el.addEventListener("click", () => {
+            clickSound.currentTime = 0;
+            clickSound.play();
+          });
+        });
+      });
+
+
+      // Chart.js - Experience vs Knowledge vs Physical Hard Work
+    const ctx = document.getElementById("myChart").getContext("2d");
+
+// Advanced Neon Gradients
+const expGradient = ctx.createLinearGradient(0, 0, 0, 250);
+expGradient.addColorStop(0, 'rgba(255, 53, 3, 0.6)');
+expGradient.addColorStop(1, 'rgba(255, 53, 3, 0)');
+
+const knowGradient = ctx.createLinearGradient(0, 0, 0, 250);
+knowGradient.addColorStop(0, 'rgba(246, 239, 210, 0.4)');
+knowGradient.addColorStop(1, 'rgba(246, 239, 210, 0)');
+
+const chartConfig = {
+    type: "line",
+    data: {
+        labels: ["2013", "2017", "2020", "2023", "2025"],
+        datasets: [
+            {
+                label: "Experience",
+                data: [5, 20, 45, 75, 95],
+                borderColor: "#FF3503",
+                backgroundColor: expGradient,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0, // Hidden dots for cleaner look
+                pointHoverRadius: 8,
+                borderWidth: 3,
+                order: 2
+            },
+            {
+                label: "Knowledge",
+                data: [10, 30, 55, 80, 100],
+                borderColor: "#F6EFD2",
+                backgroundColor: knowGradient,
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                borderWidth: 3,
+                order: 1
+            },
+            {
+                label: "Physical Hard Work",
+                data: [100, 85, 40, 15, 5],
+                borderColor: "rgba(142, 22, 22, 0.8)",
+                borderDash: [10, 5],
+                fill: false,
+                tension: 0.4,
+                pointRadius: 0,
+                borderWidth: 2,
+                order: 3
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    color: '#ffffff',
+                    font: { size: 10, family: 'Orbitron' },
+                    usePointStyle: true,
+                    padding: 15
+                }
+            },
+            tooltip: {
+                mode: 'index',
+                intersect: false,
+                backgroundColor: 'rgba(0,0,0,0.9)',
+                borderColor: '#ff3503',
+                borderWidth: 1,
+                titleFont: { family: 'Orbitron' }
+            }
+        },
+        scales: {
+            x: {
+                grid: { display: false },
+                ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 9 } }
+            },
+            y: {
+                display: false, // Minimalist: no y-axis lines
+                beginAtZero: true
+            }
+        },
+        // ADVANCE SEQUENTIAL ANIMATION
+        animations: {
+            y: {
+                easing: 'easeInOutQuart',
+                duration: 2500,
+                from: (ctx) => (ctx.index === 0 ? 300 : ctx.chart.scales.y.getPixelForValue(100))
+            }
+        }
+    }
+};
+
+const myChart = new Chart(ctx, chartConfig);
+
+
+// Function to download a certificate PDF
+// Open PDF in new tab
+  function viewCertificate(filePath) {
+    window.open(filePath, '_blank');
+  }
+
+  // Download PDF
+  function downloadCertificate(filePath) {
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = filePath.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+      // ✅ smoke
+      document.addEventListener("mousemove", (e) => {
+        const smoke = document.getElementById("smoke");
+        const particle = document.createElement("div");
+        particle.className = "smoke-particle";
+        particle.style.left = `${e.clientX}px`;
+        particle.style.top = `${e.clientY}px`;
+        smoke.appendChild(particle);
+        setTimeout(() => {
+          smoke.removeChild(particle);
+        }, 1000);
+      });
+
+
+
+
+// ✅ Scroll up/down nav effect (smooth & subtle)
+const nav = document.querySelector("nav");
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    // Scroll down → bahagyang hide
+    nav.style.transform = 'translateY(-100%)';
+  } else {
+    // Scroll up → lumabas
+    nav.style.transform = 'translateY(0)';
+  }
+
+  lastScroll = currentScroll;
+});
+
+
+// Ilagay ito sa loob ng <script> tag sa portfolio.html
+$(document).ready(function() {
+    // Tinitingnan kung may hash sa URL (e.g., #download)
+    if (window.location.hash) {
+        var target = $(window.location.hash);
+        if (target.length) {
+            // Gumamit ng timeout para siguradong loaded na ang lahat bago mag-scroll
+            setTimeout(function() {
+                $('html, body').animate({
+                    scrollTop: target.offset().top
+                }, 1000); // 1000ms = 1 segundo para sa smooth scroll
+            }, 500); // Maghintay ng 0.5 segundo bago mag-scroll
+        }
+    }
+});
+
+
+
+      </script>
+
+
+       <audio id="ui-sound" src="{% static 'assets/sounds/click.mp3' %}" preload="auto"></audio>
+  <audio id="hover-sound" src="{% static 'assets/sounds/hover.mp3' %}" preload="auto"></audio>
+  </body>
+</html>

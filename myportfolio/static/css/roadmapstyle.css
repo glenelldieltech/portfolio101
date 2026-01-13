@@ -1,0 +1,242 @@
+:root {
+  --background-color: #000000;
+  --overlay-color: rgba(0, 0, 0, 0.6);
+
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #c0c0c0;
+  --highlight-text-color: #ff3503;
+  --link-text-color: #f0f0f0;
+
+  --accent-color-1: #ff3503; /* Primary Color: Orange/Red */
+  --accent-color-2: #00bcd4;
+  --accent-color-3: #8e44ad;
+
+  --button-bg-color: #ff3503;
+  --button-text-color: #ffffff;
+  --button-hover-color: #ff3503;
+
+  --border-color: #ff3503;
+  --shadow-color: rgba(255, 107, 0, 0.3);
+}
+
+/* GLOBAL STYLES */
+body {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  font-family: 'Orbitron', sans-serif !important;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  min-height: 100vh;
+}
+
+/* BASE NAVBAR STYLES (Used across all screens, fixed position for consistency) */
+.navbar {
+  position: fixed; /* Ginagawang nakadikit sa taas */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.9); /* Mas matigas na background para hindi matakpan ng content */
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  box-sizing: border-box;
+  transition: background 0.3s ease;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.brand {
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 5px;
+  font-weight: 600;
+}
+
+/* START NOW BUTTON (Default hidden, shown only on desktop) */
+.start-btn {
+  display: none; /* Default hidden */
+  padding: 0.6rem 1.3rem;
+  border: 2px solid var(--accent-color-1);
+  border-radius: 25px;
+  color: var(--accent-color-1);
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: 3px;
+  transition: 0.3s ease;
+}
+
+.start-btn:hover {
+  background: var(--accent-color-1);
+  color: var(--primary-text-color);
+}
+
+/* BURGER MENU (Default hidden, shown only on mobile/tablet) */
+.burger {
+  display: none; /* Default hidden */
+  cursor: pointer;
+  z-index: 1001;
+  margin-left: auto; /* Itulak sa kanan sa mobile/tablet */
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+/* NAV LINKS (Default hidden, shown only on desktop) */
+.nav-links {
+  display: none; /* Default hidden */
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Desktop / Larger Screens (1024px and up) */
+@media screen and (min-width: 1024px) {
+
+  .navbar {
+    /* ITO ANG KEY: Pantayin ang laman (Logo | Links | Button) */
+    justify-content: space-between; 
+    padding: 1rem 4rem;
+  }
+
+  /* NAV LINKS - Ipakita sa Desktop at I-center */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Spacing between links */
+    /* Gawing auto ang margin para ma-center ang links sa pagitan ng logo at button */
+    margin: 0 auto; 
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 12px;
+    transition: color 0.3s ease;
+    margin-right: 0; /* Tanggalin ang dating 50px margin */
+    font-size: 0.9rem;
+  }
+
+  .nav-links a:hover {
+    color: var(--accent-color-1);
+  }
+
+  /* START NOW BUTTON - Ipakita sa Desktop */
+  .start-btn {
+    display: inline-block; 
+  }
+
+  /* BURGER MENU - Itago sa Desktop */
+  .burger {
+    display: none;
+  }
+}
+
+/* Mobile & Tablet (Up to 1023px) */
+@media screen and (max-width: 1023px) {
+
+  /* NAVBAR - Ayusin ang alignment para sa mobile */
+  .navbar {
+    justify-content: flex-start; /* Simulan ang arrangement mula kaliwa */
+    padding: 0.8rem 1rem;
+  }
+  
+  /* Logo/Brand - Position 1 */
+  .logo {
+    order: 1;
+  }
+
+  /* Burger Menu - Position 2 (Itulak sa kanan) */
+  .burger {
+    display: block; /* Ipakita ang burger */
+    order: 3;
+  }
+  
+  /* Start Now Button - Position 3 (Ilagay sa gitna ng Logo at Burger) */
+  .start-btn {
+    display: block;
+    order: 2; 
+    margin-left: auto; /* Itulak palayo sa Logo (Logo at Links ay magkahiwalay) */
+    margin-right: 20px; /* Dagdag space bago ang burger */
+    padding: 0.5rem 1rem; /* Bawasan ang padding */
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+  }
+
+
+  /* Nav Links - slide from right (Hidden by default) */
+  .nav-links {
+    position: fixed;
+    top: 0; /* Simulan sa taas */
+    right: 0;
+    width: 70%; /* Gawing mas malaki ang width ng slide-in menu */
+    max-width: 300px;
+    height: 100vh; /* Buong taas ng viewport */
+    background-color: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    transform: translateX(100%); /* Itago sa labas */
+    transition: transform 0.5s ease-in, opacity 0.5s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  /* Kapag Active na ang Nav Links (Kailangan ng JavaScript para dito) */
+  .nav-active,
+  .nav-links.active {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 4px;
+    margin-right: 0;
+    font-size: 1.2rem;
+  }
+}
+
+/* Burger Toggle Animations */
+.burger.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burger.toggle .line2 {
+  opacity: 0;
+}
+.burger.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Nav Link Fade Animation */
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

@@ -1,0 +1,874 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behind The Name</title>
+<script src="https://cdn.tailwindcss.com/3.4.16">
+</script>
+<script>
+tailwind.config = {
+ theme: {
+ extend: {
+ colors: { primary: "#ff3503", secondary: "#ffffff" },
+ borderRadius: {
+none: "0px",
+ sm: "4px",
+ DEFAULT: "8px",
+ md: "12px",
+ lg: "16px",
+ xl: "20px",
+"2xl": "24px",
+"3xl": "32px",
+full: "9999px",
+ button: "8px",
+ },
+ },
+ },
+};
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<style>
+body {
+    /* ... (Iba mo pang styles) ... */
+    cursor: none; /* Ito ang nagtatago ng cursor */
+}
+    /* --- CSS para sa Smoke Effect START --- */
+
+/* 1. Container para hindi makita ang overflow ng particles */
+#smoke {
+    position: fixed; /* Manatili sa screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Para hindi ma-block ang clicks */
+    z-index: 999; /* Siguraduhin na nasa ibabaw */
+}
+
+/* 2. Style para sa bawat particle */
+.smoke-particle {
+    position: absolute;
+    background: rgba(255, 53, 3, 0.4); /* Pula/Orange na may opacity */
+    border-radius: 50%; /* Gawing bilog */
+    filter: blur(4px); /* Gawing malabo (parang usok) */
+    opacity: 0;
+    transform: scale(0);
+    /* Animation: Pangalan, Tagal, Function, Repeat Count */
+    animation: fade-grow-up 1.5s ease-out forwards;
+}
+
+/* 3. Keyframes: Animation ng usok */
+@keyframes fade-grow-up {
+    0% {
+        opacity: 0.8;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1) translateY(-10px); /* Konting taas habang lumalaki */
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2.5) translateY(-50px); /* Sobrang laki at pagkawala */
+    }
+}
+
+/* --- CSS para sa Smoke Effect END --- */
+
+/* --- SCROLLBAR CUSTOMIZATION START --- */
+/* For Webkit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Dami ng scrollbar */
+}
+::-webkit-scrollbar-track {
+    background: #000000; /* Black background ng track */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ff3503; /* Pula ang thumb (scrollable area) */
+    border-radius: 6px;
+    border: 3px solid #000000; /* Spacing para makita ang black body */
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff5522; /* Konting liwanag pag naka-hover */
+}
+
+/* For Firefox */
+html {
+    scrollbar-color: #ff3503 #000000; /* thumb color | track color */
+    scrollbar-width: thin; /* 'auto' or 'thin' */
+}
+/* --- SCROLLBAR CUSTOMIZATION END --- */
+
+
+/* ... (Your existing custom styles - No changes needed here for overflow) ... */
+:where([class^="ri-"])::before { content: "\f3c2"; }
+/* duplicate empty .glow-border ruleset removed to avoid empty CSS ruleset; full .glow-border definition is provided later in the file */
+/* ... (Other existing styles) ... */
+
+
+
+/* ... (Your existing custom styles - No changes needed here for overflow) ... */
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.glow-border {
+box-shadow: 0 0 20px rgba(255, 53, 3, 0.5), 0 0 40px rgba(255, 53, 3, 0.3), inset 0 0 20px rgba(255, 53, 3, 0.1);
+border: 2px solid #ff3503;
+}
+.stage-glow {
+box-shadow: 0 0 15px rgba(255, 53, 3, 0.3);
+}
+.text-glow {
+text-shadow: 0 0 10px rgba(255, 53, 3, 0.5);
+}
+.progress-line {
+background: linear-gradient(to bottom, #ff3503, rgba(255, 53, 3, 0.3));
+}
+.character-bg {
+background: radial-gradient(circle at center, rgba(255, 53, 3, 0.1) 0%, rgba(0, 0, 0, 0.8) 50%, #000000 100%);
+}
+.stage-block {
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+border: 1px solid rgba(255, 53, 3, 0.2);
+transition: all 0.3s ease;
+}
+.stage-block:hover {
+border-color: #ff3503;
+box-shadow: 0 0 20px rgba(255, 53, 3, 0.3);
+}
+.hexagon {
+clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+}
+.section-dark-bg {
+background: radial-gradient(ellipse at center, rgba(15, 15, 15, 0.95) 0%, rgba(0, 0, 0, 0.98) 70%, #000000 100%);
+position: relative;
+}
+.section-dark-bg::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(255, 53, 3, 0.02) 0%, transparent 50%, rgba(255, 53, 3, 0.02) 100%);
+pointer-events: none;
+}
+
+/* --- SCROLL REVEAL FIXES START --- */
+/* Apply overflow-hidden to the body (already there, but good to check) */
+body {
+    overflow-x: hidden;
+}
+
+/* Ensure sections contain the transformed elements */
+section {
+    /* Adding overflow-hidden to sections to contain left/right transforms */
+    overflow: hidden;
+    contain: layout style paint;
+}
+
+/* Scroll Fade In (Vertical) - OK for overflow, but keep for completeness */
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity;
+}
+.scroll-fade-in.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll Slide Left (Horizontal - The potential overflow culprit) */
+.scroll-slide-left {
+    opacity: 0;
+    /* Negative X transform is what can cause overflow, the parent section/container must have overflow-x: hidden */
+    transform: translateX(-60px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+.scroll-slide-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scroll Slide Right (Horizontal - The potential overflow culprit) */
+.scroll-slide-right {
+    opacity: 0;
+    /* Positive X transform is what can cause overflow, the parent section/container must have overflow-x: hidden */
+    transform: translateX(60px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+.scroll-slide-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Other animations (Scale/Zoom/Bounce) - Vertical/Scale transforms are generally safe from horizontal overflow, but keep for completeness */
+.scroll-scale-in {
+    opacity: 0;
+    transform: scale(0.85) translateY(30px);
+    transition: all 0.9s cubic-bezier(0.34, 1.2, 0.64, 1);
+    will-change: transform, opacity;
+}
+.scroll-scale-in.revealed {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+.scroll-zoom-in {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity;
+}
+.scroll-zoom-in.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+.scroll-bounce-in {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: all 1s cubic-bezier(0.68, -0.3, 0.265, 1.2);
+    will-change: transform, opacity;
+}
+.scroll-bounce-in.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger & Other Reveals */
+.stagger-animation {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform, opacity;
+}
+.stagger-animation.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Explicit X-axis reveal classes (potential overflow culprits) */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+.scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+.scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+.scroll-reveal.revealed,
+.scroll-reveal-left.revealed,
+.scroll-reveal-right.revealed {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+/* --- SCROLL REVEAL FIXES END --- */
+
+
+/* Enhanced smooth scroll behavior */
+html {
+scroll-behavior: smooth;
+}
+/* This line is now explicitly in the SCROLL REVEAL FIXES block for clarity */
+/* body { overflow-x: hidden; } */
+
+/* Smooth container transitions */
+/* This line is now explicitly in the SCROLL REVEAL FIXES block for clarity */
+/* section { contain: layout style paint; } */
+
+/* Image container constraints */
+section img {
+max-width: 100%;
+max-height: 100%;
+object-fit: contain;
+object-position: center;
+transition: transform 0.1s ease-out;
+}
+/* Prevent layout shifts during animations */
+.stage-block,
+.character-bg {
+contain: layout;
+}
+</style>
+</head>
+<body class="bg-black text-white font-['Orbitron',sans-serif] overflow-x-hidden">
+
+<div id="smoke"></div>
+
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-primary/20 transition-transform duration-300 ease-in-out transform translate-y-0">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+        <nav class="flex items-center justify-between">
+            <div class="logo">
+                <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo" class="h-10">
+                </div>
+
+            <div class="hidden md:flex items-center space-x-8 nav-links-desktop">
+                <a href="{% url 'portfolio:index' %}#home" class="text-white hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider">HOME</a>
+                <a href="#journey" class="text-white hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider">JOURNEY</a>
+                <a href="#stages" class="text-white hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider">STAGES</a>
+                <a href="#ascension" class="text-white hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider">ASCENSION</a>
+            </div>
+
+            <a href="{% url 'portfolio:index' %}#about-me" class="hidden md:block !rounded-full whitespace-nowrap px-6 py-2 font-bold text-sm uppercase tracking-wider transition-all duration-300 border-2 border-[var(--accent-color-1)] text-[var(--accent-color-1)] hover:bg-[var(--accent-color-1)] hover:text-[var(--primary-text-color)] start-btn-desktop">
+                START NOW
+            </a>
+
+            <button class="md:hidden w-8 h-8 flex items-center justify-center burger">
+                 <div class="line1"></div>
+                 <div class="line2"></div>
+                 <div class="line3"></div>
+            </button>
+        </nav>
+    </div>
+</header>
+<main class="bg-black relative pt-20">
+<div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+<section id="home" class="relative z-10 min-h-screen flex items-center overflow-hidden section-dark-bg">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-gradient-to-br from-black via-gray-900 to-black opacity-80"></div>
+<img src="{% static 'vidios-images/behind.png' %}" alt="Hero Background" class="w-full h-full max-w-full max-h-full object-contain object-center opacity-30">
+<div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70"></div>
+</div>
+<div class="w-full max-w-6xl mx-auto px-6 relative z-10">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="relative scroll-slide-left">
+<div class="character-bg rounded-2xl p-8 glow-border relative overflow-hidden">
+<div class="absolute top-4 left-4 hexagon w-6 h-6 bg-primary stage-glow z-20"></div>
+<div class="absolute top-4 right-4 hexagon w-4 h-4 bg-primary/60 z-20"></div>
+<div class="absolute bottom-4 left-4 hexagon w-4 h-4 bg-primary/60 z-20"></div>
+<div class="absolute bottom-4 right-4 hexagon w-6 h-6 bg-primary stage-glow z-20"></div>
+<div class="aspect-square relative">
+<img src="{% static 'vidios-images/behind.png' %}" alt="Character Evolution" class="w-full h-full max-w-full max-h-full object-contain object-center rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg z-10"></div>
+<div class="absolute inset-0 flex items-center justify-center z-20">
+<div class="w-16 h-16 border-2 border-primary rounded-full flex items-center justify-center bg-black/50 backdrop-blur-sm hover:scale-110 transition-transform cursor-pointer">
+<i class="ri-play-fill text-primary text-2xl"></i>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<h2 class="text-2xl font-bold text-primary text-glow mb-2">MY EVOLUTION</h2>
+<p class="text-gray-300 text-sm">Character Transformation Journey</p>
+</div>
+</div>
+</div>
+<div class="space-y-8 scroll-slide-right">
+<div class="mb-8">
+<h1 class="text-5xl lg:text-6xl font-black text-white mb-4 leading-tight scroll-fade-in">
+THE <span class="text-primary text-glow">Multidisciplinary</span><br>REVOLUTION
+</h1>
+<p class="text-xl text-gray-300 max-w-lg scroll-fade-in">Four stages of complete transformation. From zero to legend. Select your path and begin the ultimate journey.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 scroll-bounce-in justify-center items-center">
+<a href="{% url 'portfolio:portfolio' %}"
+   class="!rounded-button whitespace-nowrap bg-primary text-white px-8 py-4 font-bold text-lg transition-all duration-300 hover:brightness-125 hover:shadow-2xl hover:shadow-primary/60"
+   style="transform: none !important;">
+    See My Portfolio in Action
+</a>
+
+<a href="{% url 'portfolio:index' %}#home"
+   class="!rounded-button whitespace-nowrap border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 font-bold text-lg transition-all duration-300 hover:brightness-125 hover:shadow-2xl hover:shadow-primary/60"
+   style="transform: none !important;">
+    Explore Home
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="journey" class="relative z-10 py-20 section-dark-bg">
+<div class="w-full max-w-4xl mx-auto px-6">
+<div class="text-center mb-12 scroll-fade-in">
+<h2 class="text-4xl font-black text-white mb-4">
+Explore <span class="text-primary text-glow">My Story</span>
+</h2>
+<p class="text-gray-400 text-lg">From zero to hero — four stages of transformation that shaped who I am today. Every challenge, every lesson, every step has forged my path</p>
+</div>
+<div class="space-y-6">
+<div class="stage-item stage-selecting bg-gray-900/50 border border-gray-800 rounded-xl p-6 transition-all duration-500 cursor-pointer relative overflow-hidden stagger-animation" data-stage="zero-point" data-state="selecting">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 stage-glow-bg transition-opacity duration-500"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<div class="stage-number w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 relative">
+<span class="stage-number-text">1</span>
+<div class="absolute inset-0 rounded-full bg-primary opacity-0 stage-pulse animate-pulse"></div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-1 transition-colors duration-300">Zero Point</h3>
+<p class="text-gray-400 text-sm transition-colors duration-300">The starting line. Where every legend begins their transformation journey.</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<div class="stage-status-dot w-3 h-3 bg-gray-600 rounded-full transition-all duration-300 relative">
+<div class="absolute inset-0 rounded-full bg-primary opacity-0 stage-status-glow"></div>
+</div>
+<div class="stage-status-text text-gray-500 text-sm transition-colors duration-300">Ready</div>
+</div>
+</div>
+<div class="stage-progress-bar mt-4 bg-gray-800 rounded-full h-2 opacity-0 transition-opacity duration-500">
+<div class="stage-progress-fill bg-gradient-to-r from-primary to-orange-500 h-2 rounded-full transition-all duration-700" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<div class="stage-item stage-activated bg-gray-900/50 border border-yellow-600/50 rounded-xl p-6 transition-all duration-500 cursor-pointer relative overflow-hidden stagger-animation" data-stage="trial-phase" data-state="activated">
+<div class="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-transparent opacity-60 stage-glow-bg transition-opacity duration-500"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<div class="stage-number w-8 h-8 bg-yellow-600 rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 relative shadow-lg shadow-yellow-600/40">
+<span class="stage-number-text">2</span>
+<div class="absolute inset-0 rounded-full bg-yellow-500 opacity-40 stage-pulse animate-pulse"></div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-1 transition-colors duration-300">Trial Phase</h3>
+<p class="text-gray-300 text-sm transition-colors duration-300">Face the challenges. Overcome obstacles. Build resilience through trials.</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<div class="stage-status-dot w-3 h-3 bg-yellow-500 rounded-full transition-all duration-300 relative shadow-sm shadow-yellow-500/60">
+<div class="absolute inset-0 rounded-full bg-yellow-400 opacity-60 stage-status-glow animate-pulse"></div>
+</div>
+<div class="stage-status-text text-yellow-400 text-sm font-medium transition-colors duration-300">In Progress</div>
+</div>
+</div>
+<div class="stage-progress-bar mt-4 bg-gray-800 rounded-full h-2 opacity-100 transition-opacity duration-500">
+<div class="stage-progress-fill bg-gradient-to-r from-yellow-500 to-yellow-400 h-2 rounded-full transition-all duration-700 shadow-sm shadow-yellow-500/50" style="width: 35%"></div>
+</div>
+</div>
+</div>
+<div class="stage-item stage-power-up bg-gray-900/50 border border-primary rounded-xl p-6 transition-all duration-500 cursor-pointer relative overflow-hidden glow-border stagger-animation" data-stage="power-up" data-state="power-up">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/30 to-orange-500/20 opacity-80 stage-glow-bg transition-opacity duration-500"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-100"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<div class="stage-number w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 relative shadow-lg shadow-primary/60 stage-glow">
+<span class="stage-number-text">3</span>
+<div class="absolute inset-0 rounded-full bg-primary opacity-60 stage-pulse animate-pulse"></div>
+<div class="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-orange-500 opacity-30 animate-spin" style="animation-duration: 3s;"></div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-1 transition-colors duration-300 text-glow">Power Up</h3>
+<p class="text-gray-200 text-sm transition-colors duration-300">Level up your skills. Unlock new abilities. Rise to new heights.</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<div class="stage-status-dot w-3 h-3 bg-primary rounded-full transition-all duration-300 relative shadow-md shadow-primary/80 stage-glow">
+<div class="absolute inset-0 rounded-full bg-primary opacity-80 stage-status-glow animate-pulse"></div>
+<div class="absolute -inset-1 rounded-full bg-gradient-to-r from-primary to-orange-500 opacity-40 animate-ping"></div>
+</div>
+<div class="stage-status-text text-primary text-sm font-bold transition-colors duration-300 text-glow">ACTIVE</div>
+</div>
+</div>
+<div class="stage-progress-bar mt-4 bg-gray-800 rounded-full h-3 opacity-100 transition-opacity duration-500 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-pulse"></div>
+<div class="stage-progress-fill bg-gradient-to-r from-primary via-orange-500 to-primary h-3 rounded-full transition-all duration-700 shadow-lg shadow-primary/40 relative overflow-hidden" style="width: 65%">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-gray-400 text-xs">Power Level</span>
+<span class="text-primary text-xs font-bold text-glow">65%</span>
+</div>
+</div>
+</div>
+<div class="stage-item stage-victory bg-gray-900/50 border border-gold rounded-xl p-6 transition-all duration-500 cursor-pointer relative overflow-hidden stagger-animation" data-stage="victory" data-state="victory" style="border-color: #ff0000;">
+<div class="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-gold/10 to-yellow-400/20 opacity-100 stage-glow-bg transition-opacity duration-500" style="background: linear-gradient(to right, rgba(255, 107, 0, 0.3), rgba(255, 107, 0, 0.3), rgba(255, 106, 0, 0.171));"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-transparent via-gold/5 to-transparent opacity-100" style="background: linear-gradient(135deg, transparent, rgba(255, 107, 0, 0.3), transparent);"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<div class="stage-number w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm transition-all duration-300 relative shadow-xl" style="background: linear-gradient(135deg, #ff0000, #ff4e4e); box-shadow: 0 0 20px rgba(255, 107, 0, 0.3);">
+<span class="stage-number-text text-gray-900">4</span>
+<div class="absolute inset-0 rounded-full opacity-60 stage-pulse animate-pulse" style="background: #ff0000;"></div>
+<div class="absolute -inset-2 rounded-full bg-gradient-to-r opacity-30 animate-spin" style="background: linear-gradient(to right, #ff0000, #ff4e4e, #ff0000); animation-duration: 4s;"></div>
+<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent"></div>
+</div>
+<div>
+<h3 class="text-xl font-bold text-white mb-1 transition-colors duration-300" style="text-shadow: 0 0 10px rgba(255, 107, 0, 0.3);">Victory</h3>
+<p class="text-gray-200 text-sm transition-colors duration-300">Master achieved. Transformation complete. Legend status unlocked.</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<div class="stage-status-dot w-4 h-4 rounded-full transition-all duration-300 relative" style="background: linear-gradient(135deg, #ff0000, #ff4e4e); box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);">
+<div class="absolute inset-0 rounded-full opacity-80 stage-status-glow animate-pulse" style="background: #ff0000;"></div>
+<div class="absolute -inset-1 rounded-full bg-gradient-to-r opacity-40 animate-ping" style="background: linear-gradient(to right, #ff0000, #ff4e4e);"></div>
+<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent"></div>
+</div>
+<div class="stage-status-text text-sm font-bold transition-colors duration-300" style="color: #ff7300; text-shadow: 0 0 8px rgba(255, 102, 0, 0.5);">COMPLETE</div>
+</div>
+</div>
+<div class="stage-progress-bar mt-4 bg-gray-800 rounded-full h-3 opacity-100 transition-opacity duration-500 relative overflow-hidden">
+<div class="absolute inset-0 rounded-full animate-pulse" style="background: linear-gradient(to right, transparent, rgba(255, 136, 0, 0.2), transparent);"></div>
+<div class="stage-progress-fill h-3 rounded-full transition-all duration-700 relative overflow-hidden" style="width: 100%; background: linear-gradient(to right, #ff0000, #ff4e4e, #ff0000); box-shadow: 0 0 15px rgba(255, 107, 0, 0.3);">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent"></div>
+</div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-gray-300 text-xs">Mastery</span>
+<div class="flex items-center space-x-1">
+<span class="text-xs font-bold" style="color: #ff9100; text-shadow: 0 0 5px rgba(255, 115, 0, 0.5);">100%</span>
+<i class="ri-trophy-fill text-xs" style="color: #ff7b00;"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="relative z-10 py-20 section-dark-bg">
+<div class="w-full max-w-6xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6 scroll-slide-left">
+<div class="flex items-center space-x-4 mb-6 scroll-fade-in">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center stage-glow">
+<span class="text-white font-bold text-lg">01</span>
+</div>
+<h2 class="text-4xl font-black text-primary text-glow">ZERO POINT</h2>
+</div>
+<h3 class="text-3xl font-bold text-white mb-4 scroll-fade-in">The Ascension</h3>
+<p class="text-gray-300 text-lg leading-relaxed mb-6 scroll-fade-in">Every legend starts from nothing. No skills, no experience, no recognition. Just row potential waiting to be unleashed.
+This is where the fire ignites. Where determination meets opportunity. Where the impossible becomes possible through sheer will.
+The zero paint isn't a weakness-it's the ultimate freedom. No limits, no boundaries, infinite possibilities ahead</p>
+<div class="flex items-center space-x-6 scroll-bounce-in">
+<div class="flex items-center space-x-2">
+<i class="ri-rocket-line text-primary text-xl"></i>
+<span class="text-gray-400">Identify Your True Goal</span>
+</div>
+<div class="flex items-center space-x-2">
+<i class="ri-arrow-up-circle-line text-primary text-xl"></i>
+<span class="text-gray-400"> Set Your Path Forward</span>
+</div>
+</div>
+</div>
+<div class="relative scroll-slide-right">
+<div class="stage-block rounded-xl p-6 glow-border">
+<div class="w-full h-80 relative overflow-hidden rounded-lg mx-auto max-w-md">
+<img src="{% static 'vidios-images/ZERO POINT.png' %}"
+alt="Leveling Up Stage"
+class="w-full h-full max-w-full max-h-full object-contain object-center rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-lg transition-all duration-700 ease-in-out hover:from-black/60 hover:via-transparent hover:to-primary/10 animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
+<section id="stages" class="relative z-10 py-20 section-dark-bg">
+<div class="w-full max-w-6xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="relative lg:order-1 scroll-slide-left">
+<div class="stage-block rounded-xl p-6 glow-border">
+
+<div class="w-full h-80 relative overflow-hidden rounded-lg mx-auto max-w-md">
+<img src="{% static 'vidios-images/about.png' %}"
+alt="Facing Challenges Stage"
+class="w-full h-full max-w-full max-h-full object-contain object-center rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-lg transition-all duration-700 ease-in-out hover:from-black/60 hover:via-transparent hover:to-primary/10 animate-pulse"></div>
+</div>
+
+
+
+</div>
+</div>
+<div class="space-y-6 lg:order-2 scroll-slide-right">
+<div class="flex items-center space-x-4 mb-6 scroll-fade-in">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center stage-glow">
+<span class="text-white font-bold text-lg">02</span>
+</div>
+<h2 class="text-4xl font-black text-primary text-glow">THE TRIALS</h2>
+</div>
+<h3 class="text-3xl font-bold text-white mb-4 scroll-fade-in">Facing Challenges</h3>
+<p class="text-gray-300 text-lg leading-relaxed mb-6 scroll-fade-in">The path reveals its true nature. Mountains appear where plains were expected. Every obstacle becomes a test of resolve, every setback a lesson in persistence. This is where character is forged in fire.</p>
+<div class="flex items-center space-x-6 scroll-bounce-in">
+<div class="flex items-center space-x-2">
+<i class="ri-shield-line text-primary text-xl"></i>
+<span class="text-gray-400">A Lifetime of Growth</span>
+</div>
+<div class="flex items-center space-x-2">
+<i class="ri-sword-line text-primary text-xl"></i>
+<span class="text-gray-400">Difficulty: Challenging</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative z-10 py-20 section-dark-bg">
+<div class="w-full max-w-6xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-6 scroll-slide-left">
+<div class="flex items-center space-x-4 mb-6 scroll-fade-in">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center stage-glow">
+<span class="text-white font-bold text-lg">03</span>
+</div>
+<h2 class="text-4xl font-black text-primary text-glow">LEVELING UP</h2>
+</div>
+<h3 class="text-3xl font-bold text-white mb-4 scroll-fade-in">The Ascension</h3>
+<p class="text-gray-300 text-lg leading-relaxed mb-6 scroll-fade-in">Skills sharpen like blade on stone. Wisdom flows like water finding its course. Power builds with each milestone conquered. The transformation becomes visible, undeniable, unstoppable.</p>
+<div class="flex items-center space-x-6 scroll-bounce-in">
+<div class="flex items-center space-x-2">
+<i class="ri-rocket-line text-primary text-xl"></i>
+<span class="text-gray-400">Begin Your Lifetime Evolution</span>
+</div>
+<div class="flex items-center space-x-2">
+<i class="ri-arrow-up-circle-line text-primary text-xl"></i>
+<span class="text-gray-400">Difficulty: Advanced</span>
+</div>
+</div>
+</div>
+<div class="relative scroll-slide-right">
+<div class="stage-block rounded-xl p-6 glow-border">
+<div class="w-full h-80 relative overflow-hidden rounded-lg mx-auto max-w-md">
+<img src="{% static 'vidios-images/LEVELING UP.png' %}"
+alt="Leveling Up Stage"
+class="w-full h-full max-w-full max-h-full object-contain object-center rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-lg transition-all duration-700 ease-in-out hover:from-black/60 hover:via-transparent hover:to-primary/10 animate-pulse"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="relative z-10 py-20 section-dark-bg">
+<div class="w-full max-w-6xl mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="relative lg:order-1 scroll-slide-left">
+<div class="stage-block rounded-xl p-6 glow-border">
+<div class="w-full h-80 relative overflow-hidden rounded-lg mx-auto max-w-md">
+<img src="{% static 'vidios-images/MASTERY.png' %}"
+alt="Final Success Stage"
+class="w-full h-full max-w-full max-h-full object-contain object-center rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-lg transition-all duration-700 ease-in-out hover:from-black/60 hover:via-transparent hover:to-primary/10 animate-pulse"></div>
+</div>
+</div>
+</div>
+<div class="space-y-6 lg:order-2 scroll-slide-right">
+<div class="flex items-center space-x-4 mb-6 scroll-fade-in">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center stage-glow">
+<span class="text-white font-bold text-lg">04</span>
+</div>
+<h2 class="text-4xl font-black text-primary text-glow">MASTERY</h2>
+</div>
+<h3 class="text-3xl font-bold text-white mb-4 scroll-fade-in">Final Success</h3>
+<p class="text-gray-300 text-lg leading-relaxed mb-6 scroll-fade-in">The summit reached. The transformation complete. From zero to legend, the impossible becomes inevitable. Now you possess the power to inspire others to begin their own heroic journey.</p>
+<div class="flex items-center space-x-6 scroll-bounce-in">
+<div class="flex items-center space-x-2">
+<i class="ri-trophy-line text-primary text-xl"></i>
+<span class="text-gray-400">Achievement: Legendary</span>
+</div>
+<div class="flex items-center space-x-2">
+<i class="ri-crown-line text-primary text-xl"></i>
+<span class="text-gray-400">Status: Master</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ascension" class="relative z-10 py-32 section-dark-bg">
+<div class="w-full max-w-4xl mx-auto px-6 text-center">
+<div class="mb-8 scroll-fade-in">
+<div class="inline-block bg-primary px-6 py-2 rounded-full text-white font-bold text-sm uppercase tracking-wider">
+FINAL STAGE
+</div>
+</div>
+<h2 class="text-6xl font-black mb-6 scroll-scale-in">
+<span class="text-primary text-glow">ASCENSION</span><span class="text-white">COMPLETE</span>
+</h2>
+<p class="text-gray-400 text-lg mb-12 max-w-lg mx-auto scroll-fade-in">
+The journey culminates. Mastery achieved. Transformation complete. You've become the hero of your own story.
+</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 scroll-bounce-in">
+<div class="bg-gradient-to-br from-gray-900 to-black border border-primary/30 rounded-lg p-6">
+<div class="text-primary text-3xl font-bold mb-1">100%</div>
+<div class="text-gray-400 text-sm uppercase tracking-wider">Transformation</div>
+</div>
+<div class="bg-gradient-to-br from-gray-900 to-black border border-primary/30 rounded-lg p-6">
+<div class="text-primary text-3xl font-bold mb-1">∞</div>
+<div class="text-gray-400 text-sm uppercase tracking-wider">Potential</div>
+</div>
+<div class="bg-gradient-to-br from-gray-900 to-black border border-primary/30 rounded-lg p-6">
+<div class="text-primary text-3xl font-bold mb-1">MAX</div>
+<div class="text-gray-400 text-sm uppercase tracking-wider">Level</div>
+</div>
+<div class="bg-gradient-to-br from-gray-900 to-black border border-primary/30 rounded-lg p-6">
+<div class="text-primary text-3xl font-bold mb-1">★</div>
+<div class="text-gray-400 text-sm uppercase tracking-wider">Master</div>
+</div>
+</div>
+<div class="relative mb-12 scroll-zoom-in">
+<div class="bg-gradient-to-br from-gray-900 to-black border-2 border-primary rounded-2xl p-8 max-w-2xl mx-auto glow-border">
+<div class="flex items-center justify-between mb-4">
+<div class="text-primary font-bold text-lg uppercase tracking-wider">LIFESTYLE + PRODUCTIVITY</div>
+<div class="w-6 h-6 bg-primary rounded-full"></div>
+</div>
+<div class="relative overflow-hidden rounded-lg">
+<img src="{% static 'vidios-images/ASCENSIONCOMPLETE.png' %}"
+alt="Masya Complete Journey"
+class="w-full h-64 max-w-full max-h-full object-contain object-center rounded-lg">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg"></div>
+</div>
+<div class="mt-6 bg-black/50 rounded-full px-6 py-3 inline-flex items-center space-x-2">
+<i class="ri-trophy-line text-primary text-lg"></i>
+<span class="text-white font-bold">Victory Achieved</span>
+<i class="ri-trophy-line text-primary text-lg"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-400 mb-8 scroll-fade-in">Ready to start your own journey?</p>
+<div class="flex justify-center">
+<a href="{% url 'portfolio:portfolio' %}#download" class="inline-block">
+    <button class="!rounded-button whitespace-nowrap bg-primary text-white px-8 py-4 font-bold text-lg transition-all duration-300 inline-flex items-center space-x-2 scroll-bounce-in hover:brightness-125 hover:shadow-2xl hover:shadow-primary/60" style="transform: none !important;" onclick="beginAscension()">
+        <span>BEGIN YOUR ASCENSION</span>
+        <i class="ri-arrow-right-line text-lg"></i>
+    </button>
+</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="relative z-10 bg-black border-t border-primary/20 section-dark-bg">
+<div class="max-w-6xl mx-auto px-6 py-16">
+<div class="grid md:grid-cols-4 gap-8 scroll-fade-in">
+<div class="space-y-6">
+
+<div class="logo">
+                <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo" class="h-10">
+                </div>
+
+<div class="flex items-center space-x-4">
+<a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+<i class="ri-facebook-line text-white text-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+<i class="ri-linkedin-line text-white text-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+<i class="ri-twitter-line text-white text-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-colors">
+<i class="ri-mail-line text-white text-lg"></i>
+</a>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-primary text-lg font-bold uppercase tracking-wider">JOURNEY</h3>
+<p class="text-gray-400 text-sm leading-relaxed">
+Shaping seamless digital journeys through thoughtful UX/IX, interactive layouts, and bold creative visuals. Every pixel is crafted to connect users emotionally and guide them effortlessly.
+</p>
+</div>
+<div class="space-y-4">
+<h3 class="text-primary text-lg font-bold uppercase tracking-wider">TRANSFORMATION</h3>
+<p class="text-gray-400 text-sm leading-relaxed">
+Transforming concepts into reality with clean, scalable code — from intuitive front-ends and powerful back-ends to full-stack solutions. Bridging creativity and functionality to bring ideas alive.
+</p>
+</div>
+<div class="space-y-4">
+<h3 class="text-primary text-lg font-bold uppercase tracking-wider">MASTERY</h3>
+<p class="text-gray-400 text-sm leading-relaxed">
+Powered by Figma for design precision and Visual Studio Code for seamless coding. These tools shape every detail of my workflow — from creative concepts to functional digital experiences — ensuring b</p>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+
+
+// ✅ Smoke effect (optimized)
+let lastSmokeTime = 0;
+const smokeDelay = 30; // 30ms = max ~33fps (smooth na)
+
+document.addEventListener("mousemove", (e) => {
+  const now = Date.now();
+  if (now - lastSmokeTime < smokeDelay) return; // throttle
+  lastSmokeTime = now;
+
+  const smoke = document.getElementById("smoke");
+  const particle = document.createElement("div");
+  particle.className = "smoke-particle";
+
+  const size = Math.random() * 20 + 10;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+
+  particle.style.left = `${e.clientX - size / 2}px`;
+  particle.style.top = `${e.clientY - size / 2}px`;
+
+  smoke.appendChild(particle);
+
+  // alisin lang kapag tapos na animation (stable, no error)
+  particle.addEventListener("animationend", () => {
+    particle.remove();
+  });
+});
+// --- Javascript for Scroll Revelation ---
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    // Reveal when 10% of the element is visible
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add a small delay for stagger effect
+            if (entry.target.classList.contains('stagger-animation')) {
+                const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+                entry.target.style.transitionDelay = `${index * 0.1}s`;
+            }
+            entry.target.classList.add('revealed');
+            // Stop observing once revealed
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.scroll-fade-in, .scroll-slide-left, .scroll-slide-right, .scroll-scale-in, .scroll-zoom-in, .scroll-bounce-in, .stagger-animation, .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right').forEach(el => {
+    observer.observe(el);
+});
+
+// --- Scroll To Section Functions (Optional but helpful) ---
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+function showPortfolio() {
+    // Replace with your actual portfolio link logic
+    console.log("Showing Portfolio...");
+    // Example: window.open('https://yourportfolio.com', '_blank');
+}
+function exploreHome() {
+    scrollToSection('home');
+}
+function beginAscension() {
+    // Replace with your actual ascension start logic
+    console.log("Beginning Ascension...");
+}
+</script>
+
+</body>
+</html>

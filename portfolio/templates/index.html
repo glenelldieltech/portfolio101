@@ -1,0 +1,1353 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:wght@400;600;700&family=Orbitron:wght@400;600;800&family=Oxanium:wght@400;700&family=Teko:wght@400;600;700&display=swap" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'javascript/script.js' %}"></script>
+</head>
+<body>
+    <div id="smoke"></div>
+
+    <nav>
+    <div class="logo">
+       <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo">
+    </div>
+    <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#tools">TOOLS</a>
+        <a href="#services">SERVICES</a>
+        <a href="{% url 'portfolio:portfolio' %}">PORTFOLIO</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>
+    <div class="scroll-content">
+
+
+
+
+
+    <section id="home" class="video-container">
+        <video class="video-background" autoplay muted loop>
+    <source src="{% static 'vidios-images/backgroundhero.mp4' %}" type="video/mp4">
+</video>
+        <div class="content-wrapper">
+          <div class="left-content hero-content animate">
+            <div class="container">
+              <h1 class="main-heading fade-item">hi there, <br>i'm Glenell Diel</h1>
+              <h2 class="subtitle fade-item">Multidisciplinary Digital Designer <br> & Developer</h2>
+              <p class="intro-text fade-item">I'm passionate about designing seamless digital experiences...</p>
+              <div class="buttons">
+                <a href="{% url 'portfolio:portfolio' %}#download" class="btn btn-primary fade-item">HIRE ME</a>
+                  <a href="#contact" class="btn btn-secondary fade-item">LET'S TALK</a>
+              </div>
+            </div>
+          </div>
+          
+        
+        
+        
+        
+            
+            <div class="right-content">
+              <ul class="experience-list">
+                  <li class="experience-item" data-exp="electrician">
+                      <div class="exp-wrapper">
+                          <span class="duration">1 year</span>
+                          <span class="title">Electrician</span>
+                      </div>
+                  </li>
+
+
+                    <li class="experience-item" data-exp="it">
+                      <div class="exp-wrapper">
+                          <span class="duration">6 months</span>
+                          <span class="title">IT Tech Support</span>
+                      </div>
+                    </li>
+                  
+
+                    <li class="experience-item" data-exp="graphic">
+                      <div class="exp-wrapper">
+                          <span class="duration">6 months</span>
+                          <span class="title">Graphic Designer</span>
+                      </div>
+                    </li>
+
+                       <li class="experience-item" data-exp="multimedia">
+                      <div class="exp-wrapper">
+                          <span class="duration">3 years</span>
+                          <span class="title">Multimedia Specialist</span>
+                      </div>
+                    </li>
+                  
+                    <li class="experience-item" data-exp="admin">
+                      <div class="exp-wrapper">
+                          <span class="duration">1 year and 5 months</span>
+                          <span class="title">Administrative Specialist</span>
+                      </div>
+                    </li>
+              </ul>
+              
+            </div>
+          
+        </div>
+        
+    </section>
+
+    <section id="experience-electrician" class="experience-detail">
+        <div class="content-wrapper">
+            <h2>1 Year Electrician</h2>
+            <div class="experience-header">
+                <p><strong>Company:</strong> [JITS CONSTRUCTION CORPORATION] | <strong>Location:</strong> [Puerto Princesa City, Philippines</p>
+                <p><strong>Duration:</strong> [09/15/2012 to 10/26/2013]</p>
+               <img src="{% static 'vidios-images/electrician.png' %}" 
+         alt="Glenell P. Diel" class="profile-image">
+           <div class="fullscreen-overlay">
+             <div class="fullscreen-content">
+               </div>
+             <button class="close-button" aria-label="Close fullscreen view"></button>
+           </div>
+            </div>
+            <div class="experience-content">
+                <h3>Summary:</h3>
+                <ul>
+                    <li>Installed and maintained electrical systems in residential and commercial properties.</li>
+                    <li>Interpreted blueprints and technical diagrams to ensure accurate wiring and safety compliance.</li>
+                    <li>Conducted inspections and troubleshooting to identify electrical issues and perform repairs.</li>
+                    <li>Gained strong knowledge of safety standards and hands-on technical problem-solving.</li>
+                </ul>
+            </div>
+        </div>
+            <div class="gallery-container">
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/collage2.png' %}" alt="production">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/electricianPose.png' %}" alt="blueprint">
+              </div>
+              <div class="gallery-item text-item">
+                2013
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/electricianP.png' %}" alt="inspections">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/collage1.png' %}" alt="Weapon Specs">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/jits.png' %}" alt="image lunch break">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/electrician2.png' %}" alt="Character Portrait">
+              </div>
+              <div class="gallery-item text-item">
+               Electrician | Powering Projects for 1 Year
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/collage3.png' %}" alt="Here’s a photo of my previous workplace">
+              </div>
+            </div>
+
+            <div class="video-preview">
+            <video id="multimedia-video" src="{% static 'vidios-images/project-done.mp4' %}" muted playsinline></video>
+            </div>
+          </div>
+        
+          <div class="fullscreen-overlay">
+            <button class="close-button" aria-label="Close fullscreen view"></button>
+            <div class="fullscreen-content">
+              </div>
+          </div>
+    </section>
+
+
+<section id="experience-it" class="experience-detail">
+        <div class="content-wrapper">
+            <h2>6 Months IT Tech Support</h2>
+            <div class="experience-header">
+                <p><strong>Company:</strong> [MMDA Metrobase] | <strong>Location:</strong> [MMDA Metrobase
+                    H26V+H89, EDSA, Orense, Makati, Metro Manila
+                    IT TECH, Intern 2017, Philippines]</p>
+                <p><strong>Duration:</strong> [Intern 2017]</p>
+           <img src="{% static 'vidios-images/ITtech.png' %}" alt="A man wearing a safety helmet and work uniform, holding electrical tools and working on a control panel in a technical workspace. The background shows cables and equipment, conveying a focused and professional atmosphere."
+         alt="Glenell P. Diel" class="profile-image">
+           <div class="fullscreen-overlay">
+             <div class="fullscreen-content">
+               </div>
+             <button class="close-button" aria-label="Close fullscreen view"></button>
+           </div>
+            </div>
+            <div class="experience-content">
+                <h3>Summary:</h3>
+                <ul>
+                    <li>Provided hardware and software support to end-users.</li>
+                    <li>Installed and configured operating systems and office applications.</li>
+                    <li>Diagnosed and resolved technical issues via remote and on-site support.</li>
+                    <li>Documented issues and maintained system logs for troubleshooting.</li>
+                </ul>
+            </div>
+        </div>
+              <div class="gallery-container">
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/metrobase.png' %}" alt="production">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento10.png' %}" alt="blueprint">
+              </div>
+              <div class="gallery-item text-item">
+                2017
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento12.png' %}" alt="inspections">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento16.png' %}" alt="Weapon Specs">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/metrobase-logo.png' %}" alt="image lunch break">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento11.png' %}" alt="Character Portrait">
+              </div>
+              <div class="gallery-item text-item">
+               IT Support Specialist | Providing Smart Tech Solutions
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento-image.png' %}" alt="Here’s a photo of my previous workplace">
+              </div>
+            </div>
+
+            <div class="video-preview">
+            <video id="multimedia-video" src="{% static 'vidios-images/metrobaseplace.mp4' %}" muted playsinline></video>
+            </div>
+          </div>
+        
+          <div class="fullscreen-overlay">
+            <button class="close-button" aria-label="Close fullscreen view"></button>
+            <div class="fullscreen-content">
+              </div>
+          </div>
+    </section>
+
+
+
+
+   <section id="experience-graphic" class="experience-detail">
+        <div class="content-wrapper">
+            <h2>6 Months Graphic Designer</h2>
+            <div class="experience-header">
+                <p><strong>Company:</strong> [Grabjobs Ph] | <strong>Location:</strong> [Arthaland Century Pacific Tower, Bonifacio Global City Taguig, Philippines]</p>
+                <p><strong>Duration:</strong> [08/2019-01/2020]</p>
+            <img src="{% static 'vidios-images/graphics designer.png' %}" 
+         alt="Glenell P. Diel" class="profile-image">
+           <div class="fullscreen-overlay">
+             <div class="fullscreen-content">
+               </div>
+             <button class="close-button" aria-label="Close fullscreen view"></button>
+           </div>
+            </div>
+            <div class="experience-content">
+                <h3>Summary:</h3>
+                <ul>
+                    <li>Created branding materials, posters, brochures, and social media graphics.</li>
+                    <li>Worked closely with clients to ensure visual alignment with their brand identity.</li>
+                    <li>Managed multiple design projects under tight deadlines.</li>
+                    <li>Skilled in visual storytelling, layout, and typography.</li>
+                </ul>
+            </div>
+        </div>
+              <div class="gallery-container">
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/GLENELL P. DIEL.png' %}" alt="production">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento image2.png' %}" alt="blueprint">
+              </div>
+              <div class="gallery-item text-item">
+                2020
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/grabjimage2.png' %}" alt="inspections">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento image 4.png' %}" alt="Weapon Specs">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/grabjobs logo.png' %}" alt="image lunch break">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento image5.png' %}" alt="Character Portrait">
+              </div>
+              <div class="gallery-item text-item">
+               Graphic Designer | 6 Months of Creative Experience
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bentoimage6.png' %}" alt="Here’s a photo of my previous workplace">
+              </div>
+            </div>
+
+            <div class="video-preview">
+            <video id="multimedia-video" src="{% static 'vidios-images/grabjcenturybuilding.mp4' %}" muted playsinline></video>
+            </div>
+          </div>
+        
+          <div class="fullscreen-overlay">
+            <button class="close-button" aria-label="Close fullscreen view"></button>
+            <div class="fullscreen-content">
+              </div>
+          </div>
+    </section>
+
+
+
+    <section id="experience-multimedia" class="experience-detail">
+        <div class="content-wrapper">
+            <h2>3 Years Multimedia Specialist</h2>
+            <div class="experience-header">
+                <p><strong>Company:</strong> [Project Life Studio] | <strong>Location:</strong> [Silang, Cavite,Philippines]</p>
+                <p><strong>Duration:</strong> [ 09/2020 - 10/2023]</p>
+            <img src="{% static 'vidios-images/projectlifeprofile3.png' %}" 
+         alt="Glenell P. Diel" class="profile-image">
+           <div class="fullscreen-overlay">
+             <div class="fullscreen-content">
+               </div>
+             <button class="close-button" aria-label="Close fullscreen view"></button>
+           </div>
+            </div>
+            <div class="experience-content">
+                <h3>Summary:</h3>
+                <ul>
+                    <li>Developed multimedia content, including animations, motion graphics, and interactive media.</li>
+                    <li>Produced visual assets for digital platforms, websites, and social media campaigns.</li>
+                    <li>Collaborated with developers and marketing teams to deliver engaging user experiences.</li>
+                    <li>Proficient in Adobe Creative Suite (Photoshop, Illustrator, After Effects, Premiere Pro).</li>
+                </ul>
+            </div>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/project life production.png' %}" alt="production">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/projectlifeprofile2.png' %}" alt="blueprint">
+              </div>
+              <div class="gallery-item text-item">
+                2023
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/projectlifeprofile.png' %}" alt="inspections">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/projectlife.png' %}" alt="Weapon Specs">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/project life.png' %}" alt="image lunch break">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/projectlifeprofile4.png' %}" alt="Character Portrait">
+              </div>
+              <div class="gallery-item text-item">
+                Multimedia Expert | Designing Engaging Digital Experiences
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/grabjimage.png' %}" alt="Here’s a photo of my previous workplace">
+              </div>
+            </div>
+
+            <div class="video-preview">
+            <video id="multimedia-video" src="{% static 'vidios-images/project life.mp4' %}" muted playsinline></video>
+            </div>
+          </div>
+        
+          <div class="fullscreen-overlay">
+            <button class="close-button" aria-label="Close fullscreen view"></button>
+            <div class="fullscreen-content">
+              </div>
+          </div>
+    </section>
+
+    
+
+    <section id="experience-admin" class="experience-detail">
+        <div class="content-wrapper">
+            <h2>1 Year and 5 Months Administrative Specialist</h2>
+            <div class="experience-header">
+                <p><strong>Company:</strong> [BMP’S SOLAR POWER SYSTEM] | <strong>Location:</strong> [oblacion 1, Sagay City, Neg. Occ.,Philippines]</p>
+                <p><strong>Duration:</strong> [11/2023- 04/2025]</p>
+              <img src="{% static 'vidios-images/administrative.png' %}" 
+         alt="Glenell P. Diel" class="profile-image">
+           <div class="fullscreen-overlay">
+             <div class="fullscreen-content">
+             </div>
+             <button class="close-button" aria-label="Close fullscreen view"></button>
+           </div>
+            </div>
+            <div class="experience-content">
+                <h3>Summary:</h3>
+                <ul>
+                    <li>Handled document control, scheduling, and data entry tasks.</li>
+                    <li>Maintained office systems and ensured smooth workflow operations.</li>
+                    <li>Supported executive staff with reports, presentations, and meeting logistics.</li>
+                    <li>Developed efficient filing systems and improved internal communication processes.</li>
+                </ul>
+            </div>
+        </div>
+              <div class="gallery-container">
+            <div class="gallery-grid">
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/workbento10.png' %}" alt="production">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento17.png' %}" alt="blueprint">
+              </div>
+              <div class="gallery-item text-item">
+                2025
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento15.png' %}" alt="inspections">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/administrative-Work-list.png' %}" alt="Weapon Specs">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bmpslogo.png' %}" alt="image lunch break">
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/bento18.png' %}" alt="Character Portrait">
+              </div>
+              <div class="gallery-item text-item">
+               Driven Admin Specialist Focused on Productivity and Precision
+              </div>
+              <div class="gallery-item">
+                <img src="{% static 'vidios-images/portfoliowhile-working.png' %}" alt="Here’s a photo of my previous workplace">
+              </div>
+            </div>
+
+            <div class="video-preview">
+            <video id="multimedia-video" src="{% static 'vidios-images/WorkVideo-Presentation.mp4' %}" muted playsinline></video>
+            </div>
+          </div>
+        
+          <div class="fullscreen-overlay">
+            <button class="close-button" aria-label="Close fullscreen view"></button>
+            <div class="fullscreen-content">
+              </div>
+          </div>
+    </section>
+
+    <section id="about" class="about-me-section1">
+   <div class="container1"  id="mainContainer">
+    <div class="splash-container1 left-splash1">
+
+      <div class="left-content1">
+
+        <h2 class="section-heading1 reveal-fade-up">ABOUT ME</h2>
+
+
+      
+        <h1 class="name-title1 reveal-fade-up">
+   Discover my<br><span class="name-line2">Design Journey</span>
+ </h1>
+
+        <p class="bio-text1 parallax-trigger reveal-fade-up typewriter" data-depth="0.5">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My career journey is defined by adaptability, hands-on experience, and a deep commitment to growth. I began as an electrician, where I developed practical problem-solving skills and a strong foundation in technical work. 
+    <br><br>My path then led to IT support, where I provided technical assistance and customer service, learning to troubleshoot under pressure while communicating effectively with users.
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Driven by creativity, I transitioned into graphic design—translating ideas into compelling visual content. <br><br>  This passion evolved further as I spent over three years as a multimedia specialist, combining storytelling, motion graphics, and sound <br> design to produce engaging, impactful media.
+    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With over 5 years of experience in digital design and development, I bring a holistic skill set that bridges design and front-end development. This enables me to create digital solutions that are not only visually engaging but also intuitive and user-friendly.
+    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I believe in a human-centered design approach—building experiences that serve both users and business goals.<br> My workflow includes research, strategy, and iterative testing to ensure every project exceeds expectations.
+</p>
+
+
+<img src="{% static 'vidios-images/signature (1).png' %}"
+      alt="Signature"
+      class="signature1 parallax-trigger"
+      data-depth="0.5" />
+
+<h1 class="greeting-title">
+    Hey, I’m Glen.<br>
+    How can I help you?
+</h1>
+
+<a href="{% url 'portfolio:profile' %}#workstation" class="btn-primary1" style="animation-delay:0.6s;">
+    A. My Workstation tools and 
+    <span class="indent">Equipment →</span>
+</a>
+
+<a href="{% url 'portfolio:profile2' %}#video-book1" class="btn-primary1" style="animation-delay:0.8s;">
+    B. I like watching design and
+    <span class="indent">technology →</span>
+</a>
+
+<a href="{% url 'portfolio:roadmap' %}" class="btn-primary1" style="animation-delay:1s;">
+    C. Behind the Name →
+</a>
+
+<a href="#contact" class="btn-primary1" style="animation-delay:1.2s;">
+    GET IN TOUCH →
+</a>
+
+      </div>
+    </div>
+
+
+    
+
+    <div class="splash-container1 right-splash1">
+      <img src="{% static 'vidios-images/orang splashbackground.png' %}" alt="Right Splash" class="orange-splash1" />
+      <img src="{% static 'vidios-images/GLENELL P. DIEL profile.png' %}"
+      alt="Profile"
+      class="profile-overlay1 parallax-3d"
+      data-depth="1" />
+    </div>
+
+   </div>
+    
+</section>
+
+
+
+
+
+
+
+
+    <section id="tools" class="tools-section">
+   <h2 class="section-title2">TOOLS I USE</h2>
+   <h3 class="section-question">A toolbox shaped by design and code.</h3>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <img src="{% static 'vidios-images/Figma logo.png' %}" alt="Figma">
+            <h3>Figma</h3>
+            <p>UI/UX design for web and mobile interfaces.</p>
+          </div>
+          <div class="tool-card">
+            <img src="{% static 'vidios-images/vs_code.png' %}" alt="VS Code">
+            <h3>Visual Studio Code</h3>
+            <p>Code editor for web development projects.</p>
+          </div>
+          <div class="tool-card">
+            <img src="{% static 'vidios-images/adobe_photoshop.png' %}" alt="Photoshop">
+            <h3>Adobe Photoshop</h3>
+            <p>Graphic design and image editing tool.</p>
+          </div>
+          <div class="tool-card">
+            <img src="{% static 'vidios-images/wordpress.png' %}" alt="Illustrator">
+            <h3>Wordpress</h3>
+            <p>Flexible system for building websites.</p>
+          </div>
+          <div class="tool-card">
+   <img src="{% static 'vidios-images/ketchup-logo.png' %}" alt="SketchUp">
+   <h3>SketchUp</h3>
+   <p>3D modeling software for architecture</p>
+</div>
+<div class="tool-card">
+   <img src="{% static 'vidios-images/filmor.png' %}" alt="Filmora">
+   <h3>Filmora</h3>
+   <p>Beginner-friendly video editing software.</p>
+</div>
+
+<div class="tool-card">
+   <img src="{% static 'vidios-images/canva.png' %}" alt="Canva">
+   <h3>Canva</h3>
+   <p>design tool for graphics and social media.</p>
+</div>
+
+<div class="tool-card">
+   <img src="{% static 'vidios-images/ms_word.png' %}" alt="Microsoft Office">
+   <h3>Microsoft Office</h3>
+   <p>Productivity suite including Word, Excel, and PowerPoint.</p>
+</div>
+
+<div class="tool-card">
+   <img src="{% static 'vidios-images/unreal-engine.png' %}" alt="Unreal Engine">
+   <h3>Unreal Engine</h3>
+   <p>High-performance game engine for 3D and real-time rendering.</p>
+</div>
+
+<div class="tool-card">
+   <img src="{% static 'vidios-images/illustrator.png' %}" alt="Adobe Illustrator">
+   <h3>Adobe Illustrator</h3>
+   <p>Vector graphics and to create professional logo design software </p>
+</div>
+
+        </div>
+    </section>
+    
+   <section id="services" class="services-section">
+   <h2 class="section-title3">MY SERVICES</h2>
+   <h3 class="section-question2">Empowering Brands Through Design</h3>
+   <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">
+        <video autoplay muted loop playsinline width="60" height="60">
+          <source src="{% static 'vidios-images/webdesign.mp4' %}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <h3 class="service-title">Web Design & Development</h3>
+      <p class="service-description">Custom website design and development with responsive layouts, modern technologies, and seamless user experiences.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <video autoplay muted loop playsinline width="60" height="60">
+          <source src="{% static 'vidios-images/mobile.mp4' %}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <h3 class="service-title">Mobile App Design</h3>
+      <p class="service-description">Intuitive and engaging mobile application designs that prioritize user experience and functionality.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <video autoplay muted loop playsinline width="60" height="60">
+          <source src="{% static 'vidios-images/graphics-design.mp4' %}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <h3 class="service-title">Graphic Design</h3>
+      <p class="service-description">Eye-catching visual assets including logos, branding materials, marketing collateral, and social media graphics.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">
+        <video autoplay muted loop playsinline width="60" height="60">
+          <source src="{% static 'vidios-images/ui-ux.mp4' %}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <h3 class="service-title">UI/UX Research</h3>
+      <p class="service-description">
+        Comprehensive user research, persona development, user flows, wireframes, and usability testing.</p>
+    </div>
+
+   </div>
+</section>
+
+{% if messages %}
+    <div class="top-alert-container">
+      {% for message in messages %}
+        <div class="top-alert {% if message.tags %}{{ message.tags }}{% endif %}">
+          {{ message }}
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+      {% endfor %}
+    </div>
+{% endif %}
+
+<section id="contact">
+    <h2 class="section-title1">GET IN TOUCH</h2>
+    <div class="contact-container1">
+      <div class="contact-info">
+       <p class="section-subtitle">Let's build something meaningful.</p>
+<h1 class="section-title">Contact Me</h1>
+        <div class="contact-item">
+          <h3 class="contact-title">Email</h3>
+          <p class="contact-detail">glendiel09@gmail.com</p>
+        </div>
+        <div class="contact-item">
+          <h3 class="contact-title">Phone</h3>
+          <p class="contact-detail">+63 (916) 593-8713</p>
+        </div>
+        <div class="contact-item">
+          <h3 class="contact-title">Location</h3>
+          <p class="contact-detail">Bacoor, Cavite, PH</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form method="POST" action="{% url 'portfolio:contact' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+</section>
+
+
+
+<section class="slider">
+    <div class="slider-track">
+      <span>I understand</span>
+      <span>Tell me more</span>
+      <span>You matter</span>
+      <span>I appreciate you</span>
+      <span>I’m here for you</span>
+      <span>You make me smile</span>
+      <span>I respect you</span>
+      <span>You inspire me</span>
+      <span>With you, I feel at peace</span>
+
+      <span>I understand</span>
+      <span>Tell me more</span>
+      <span>You matter</span>
+      <span>I appreciate you</span>
+      <span>I’m here for you</span>
+      <span>You make me smile</span>
+      <span>I respect you</span>
+      <span>You inspire me</span>
+      <span>With you, I feel at peace</span>
+    </div>
+</section>
+
+<footer class="cyber-footer">
+    <div class="footer-top">
+      
+      <div class="footer-brand">
+    <img src="{% static 'vidios-images/Logo2.png' %}" alt="Glenell Logo" class="footer-logo">
+    
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=61581834924653" target="_blank">
+        <img src="{% static 'icon/facebook.png' %}" alt="Facebook" class="social-icon">
+      </a>
+      <a href="https://linkedin.com" target="_blank">
+        <img src="{% static 'icon/linkedin.png' %}" alt="LinkedIn" class="social-icon">
+      </a>
+      <a href="https://github.com" target="_blank">
+        <img src="{% static 'icon/github.png' %}" alt="GitHub" class="social-icon">
+      </a>
+      <a href="mailto:glenelldieltech@gmail.com">
+        <img src="{% static 'icon/email.png' %}" alt="Email" class="social-icon">
+      </a>
+    </div>
+</div>
+
+
+      <div class="footer-center">
+        <div class="footer-block">
+          <h4>Design</h4>
+          <p>Shaping seamless digital journeys through thoughtful UI/UX, interactive layouts, 
+          and bold creative visuals. Every pixel is crafted to connect users emotionally 
+          and guide them effortlessly.</p>
+        </div>
+        <div class="footer-block">
+          <h4>Development</h4>
+          <p>Transforming concepts into reality with clean, scalable code — 
+          from intuitive frontends and powerful backends to full-stack solutions. 
+          Bridging creativity and functionality to bring ideas alive.</p>
+        </div>
+        <div class="footer-block">
+          <h4>Tools</h4>
+          <p>Powered by <strong>Figma</strong> for design precision and 
+      <strong>Visual Studio Code</strong> for seamless coding.  
+      These tools shape every detail of my workflow — from creative concepts 
+      to functional digital experiences — ensuring both creativity 
+      and efficiency work hand in hand.</p>
+        </div>
+      </div>
+
+      <div class="footer-message">
+        <p><strong>Coffee ☕ and consistency</strong><br>is enough to startup your day.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Glenell Diel. All rights reserved.</p>
+    </div>
+</footer>
+
+</div> <audio id="ui-sound" src="{% static 'assets/sounds/click.mp3' %}" preload="auto"></audio>
+<audio id="hover-sound" src="{% static 'assets/sounds/hover.mp3' %}" preload="auto"></audio>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Re-declare audio elements here by referencing the HTML audio tags
+    const clickSound = document.getElementById("ui-sound");
+    const hoverSound = document.getElementById("hover-sound");
+
+
+    // ✅ Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector(".burger");
+      const nav = document.querySelector(".nav-links");
+      const navLinks = document.querySelectorAll(".nav-links a");
+
+      if (burger && nav) {
+        burger.addEventListener("click", () => {
+          nav.classList.toggle("nav-active");
+          burger.classList.toggle("toggle");
+
+          navLinks.forEach((link, index) => {
+            link.style.animation = nav.classList.contains("nav-active")
+              ? `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`
+              : "";
+          });
+        });
+      }
+    };
+
+    // ✅ Animate Experience Items (Initial load)
+    const animateExperienceItems = () => {
+        const experienceItems = document.querySelectorAll(".experience-item");
+        setTimeout(() => {
+            experienceItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add("animate");
+                }, index * 200);
+            });
+        }, 8000); // 8 seconds delay as per your original code
+    };
+
+    // ✅ Experience Toggle with Sounds
+    const experienceToggle = () => {
+      const expItems = document.querySelectorAll(".experience-item");
+
+      expItems.forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          hoverSound.currentTime = 0;
+          hoverSound.play();
+        });
+
+        item.addEventListener("click", () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+
+          const expType = item.getAttribute("data-exp");
+          const expSection = document.getElementById(`experience-${expType}`);
+
+          document.querySelectorAll(".experience-detail").forEach((section) => {
+            section.classList.remove("active");
+          });
+
+          if (expSection) {
+            expSection.classList.add("active");
+            // NOTE: Scroll is handled by the common smooth scroll function below (smoothScrollTo).
+          }
+        });
+      });
+    };
+
+    // ✅ Smooth Scroll for Anchor Links (Native Smooth Scrolling Logic)
+    function smoothScrollTo(targetEl) {
+      if (targetEl) {
+        const top = targetEl.getBoundingClientRect().top + window.scrollY;
+        // The smooth scroll logic needs to calculate the target position 
+        // relative to the scroll-content's starting position (which is 0).
+        // Since the custom scroll logic is running, we just need to target 
+        // the element's position within the virtual scroll space.
+        const scrollContent = document.querySelector('.scroll-content');
+        if (scrollContent) {
+            const targetPos = targetEl.getBoundingClientRect().top + (window.scrollY || 0);
+            window.scrollTo({ top: targetPos, behavior: "smooth" });
+        } else {
+            // Fallback for native scroll (just in case)
+            window.scrollTo({ top: top, behavior: "smooth" });
+        }
+      }
+    }
+
+    // Para sa mga <a href="#...">
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        const href = this.getAttribute("href");
+        if (href && href.startsWith("#")) {
+          e.preventDefault();
+          const targetEl = document.querySelector(href);
+          smoothScrollTo(targetEl);
+        }
+      });
+    });
+
+    // Para sa mga <li class="experience-item">
+    document.querySelectorAll(".experience-item").forEach((item) => {
+      item.addEventListener("click", function () {
+        const exp = this.getAttribute("data-exp"); // e.g. "electrician"
+        const targetEl = document.querySelector(`#experience-${exp}`);
+        smoothScrollTo(targetEl);
+      });
+    });
+    
+    // 🔥 CUSTOM SCROLL LOGIC (IBINALIK)
+    (function () {
+      const content = document.querySelector('.scroll-content');
+      if (!content) return; 
+
+      let current = 0;
+      let target = 0;
+      const ease = 0.02; 
+
+      function setBodyHeight() {
+        document.body.style.height =
+          Math.ceil(content.getBoundingClientRect().height) + 'px';
+      }
+
+      function onScroll() {
+        target = window.scrollY || window.pageYOffset;
+      }
+
+      function animate() {
+        current += (target - current) * ease;
+        const rounded = Math.round(current * 100) / 100;
+        content.style.transform = `translateY(${-rounded}px)`;
+        requestAnimationFrame(animate);
+      }
+
+      function init() {
+        setBodyHeight();
+        window.addEventListener('resize', setBodyHeight);
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+        requestAnimationFrame(animate);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+    // 🔥 END OF CUSTOM SCROLL LOGIC
+
+
+    // ✅ Button & Link Sounds
+    const applyButtonSounds = () => {
+      // Re-use clickSound and hoverSound from top of script
+
+      const buttons = document.querySelectorAll(
+        "button, a, .btn, .btn-primary, .btn-secondary, .btn-primary1"
+      ); 
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("mouseenter", () => {
+          hoverSound.currentTime = 0;
+          hoverSound.play();
+        });
+
+        btn.addEventListener("click", () => {
+          clickSound.currentTime = 0;
+          clickSound.play();
+        });
+      });
+    };
+
+    // ✅ Tools Section Animation (click + scroll)
+    const toolsNavLink = document.querySelector('a[href="#tools"]');
+    const toolCards = document.querySelectorAll(".tool-card");
+
+    // --- FUNCTION FOR STAGGERED ANIMATION ---
+    function triggerToolsAnimation() {
+      toolCards.forEach((card) => card.classList.remove("animate"));
+      void document.body.offsetWidth; 
+      toolCards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add("animate");
+        }, index * 350);
+      });
+    }
+
+    // --- CLICK ANIMATION SA TOOLS SECTION ANIMATION ---
+    toolsNavLink?.addEventListener("click", triggerToolsAnimation);
+
+    // --- SCROLL ANIMATION (IntersectionObserver) ---
+    const toolsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          triggerToolsAnimation();  
+        } 
+      });
+    }, { threshold: 0.2 }); 
+
+    if (toolCards.length) {
+      toolsObserver.observe(document.getElementById('tools'));
+    }
+
+
+    // ✅ Services Section Animation (click + scroll)
+    const servicesNavLink = document.querySelector('a[href="#services"]');
+    const serviceCards = document.querySelectorAll(".service-card");
+
+    // --- FUNCTION FOR STAGGERED ANIMATION ---
+    function triggerServicesAnimation() {
+      serviceCards.forEach((card) => card.classList.remove("animate"));
+      void document.body.offsetWidth; 
+      serviceCards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add("animate");
+        }, index * 300); 
+      });
+    }
+
+    // --- CLICK ANIMATION ---
+    servicesNavLink?.addEventListener("click", triggerServicesAnimation);
+
+    // --- SCROLL ANIMATION (IntersectionObserver) ---
+    const servicesObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          triggerServicesAnimation(); 
+        }
+      });
+    }, { threshold: 0.2 }); 
+
+    if (serviceCards.length) {
+      servicesObserver.observe(document.getElementById('services')); 
+    }
+
+
+    // =====================
+    // Scroll Animations (Generic)
+    // =====================
+    function observeElements(elements, threshold = 0.1, delay = 0) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (delay) {
+              setTimeout(() => entry.target.classList.add('animate'), delay);
+            } else {
+              entry.target.classList.add('animate');
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold });
+
+      elements.forEach(el => observer.observe(el));
+    }
+
+    observeElements(document.querySelectorAll('.service-card'), 0.1);
+    observeElements(document.querySelectorAll('.portfolio-item'), 0.15);
+
+
+    // =====================
+    // Gallery / Fullscreen Overlay
+    // =====================
+   document.querySelectorAll('.gallery-container').forEach(container => {
+    const section = container.closest('section');
+    const overlay = section.querySelector('.fullscreen-overlay');
+    const content = overlay.querySelector('.fullscreen-content');
+    const closeBtn = overlay.querySelector('.close-button');
+
+    container.querySelectorAll('.gallery-item img').forEach(img => {
+      img.addEventListener('click', () => {
+        content.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+        overlay.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      content.innerHTML = '';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape" && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        content.innerHTML = '';
+      }
+    });
+   });
+
+
+    // =====================
+    // Video Hover + Fullscreen
+    // =====================
+    document.querySelectorAll("video").forEach((video) => {
+      video.addEventListener("mouseenter", () => video.play());
+
+      video.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+
+      video.addEventListener("click", () => {
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      });
+    });
+
+    // === PARALLAX EFFECT ===
+    function applyParallax(el, depth) { 
+      const rect = el.getBoundingClientRect();
+      const offset = rect.top;
+      const windowHeight = window.innerHeight;
+
+      if (offset >= 0 && offset <= windowHeight) {
+        const relativeY = offset / windowHeight;
+        const translateY = (0.5 - relativeY) * depth * 40;
+        el.style.transform = `translateY(${translateY}px) scale(1.01)`;
+      }
+    }
+
+    const parallaxEls = document.querySelectorAll('.parallax-trigger');
+    const activeParallax = new Set();
+
+    const parallaxObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeParallax.add(entry.target);
+        } else {
+          activeParallax.delete(entry.target);
+        }
+      });
+    }, { threshold: 0.3 }); 
+
+    parallaxEls.forEach(el => parallaxObserver.observe(el));
+
+    window.addEventListener('scroll', () => {
+      activeParallax.forEach(el => {
+        const depth = parseFloat(el.dataset.depth) || 1;
+        applyParallax(el, depth);
+      });
+    });
+
+
+    // === FADE IN ON SCROLL ===
+    const fadeElements = document.querySelectorAll('.reveal-fade-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+    fadeElements.forEach(el => fadeObserver.observe(el));
+
+    // === TYPEWRITER EFFECT ===
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    typewriterElements.forEach(el => {
+      if (el.innerHTML.trim() !== "") {
+          el.dataset.fullhtml = el.innerHTML.trim();
+          el.innerHTML = "";
+      }
+    });
+
+    const typewriterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('typing-done')) {
+          typeHTML(entry.target);
+        } else if (!entry.isIntersecting && entry.target.classList.contains('typing-done')) {
+           // Ito ang magre-reset ng text kapag nag-scroll out, kung iyon ang desired effect.
+           // Pero inalis ito para mas stable.
+        }
+      });
+    }, { threshold: 0.3 });
+    typewriterElements.forEach(el => typewriterObserver.observe(el));
+
+    function typeHTML(element) {
+      if (element.classList.contains('typing-done')) return;
+
+      element.innerHTML = "";
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(element.dataset.fullhtml, "text/html");
+      const nodes = Array.from(doc.body.childNodes);
+
+      let delay = 0;
+      function typeNode(node, parent) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent;
+          for (let char of text) {
+            const span = document.createElement("span");
+            span.textContent = char;
+            span.style.opacity = "0";
+            span.style.transition = "opacity 0.15s ease";
+            parent.appendChild(span);
+
+            setTimeout(() => {
+              span.style.opacity = "1";
+            }, delay);
+
+            delay += 15;
+          }
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          const el = document.createElement(node.tagName);
+          for (let attr of node.attributes) {
+            el.setAttribute(attr.name, attr.value);
+          }
+          parent.appendChild(el);
+          node.childNodes.forEach(child => typeNode(child, el));
+        }
+      }
+      nodes.forEach(node => typeNode(node, element));
+
+      setTimeout(() => {
+          element.classList.add('typing-done');
+      }, delay);
+    }
+
+
+    // Trigger year list (on load logic)
+    window.addEventListener('load', () => {
+      const experienceItems = document.querySelectorAll('.experience-item');
+      const fadeItems = document.querySelectorAll('.fade-item');
+
+      setTimeout(() => {
+        experienceItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('animate');
+          }, index * 200);
+        });
+
+        fadeItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('animate');
+          }, index * 200 + experienceItems.length * 200 + 500);
+        });
+      }, 6000);
+    });
+
+    // Who am I section (retained)
+    window.goToPage = function(pageId) {
+      const aboutMeContainer = document.querySelector('.container1');
+      if (aboutMeContainer) aboutMeContainer.classList.add('hidden');
+
+      document.querySelectorAll('.page-section').forEach(page => {
+        page.classList.add('hidden');
+      });
+
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+
+        if (pageId === 'pageA') {
+          const items = targetPage.querySelectorAll('.bento-item');
+          items.forEach((item, i) => {
+            item.style.transform = "rotateY(90deg)";
+            item.style.opacity = "0";
+            setTimeout(() => {
+              item.style.transform = "rotateY(0deg)";
+              item.style.opacity = "1";
+            }, i * 200);
+          });
+        }
+      }
+    };
+
+
+    // Image Carousel for Page C (retained)
+    let currentImage = 0;
+    let images = document.querySelectorAll('#pageC .image-area img');
+    let interval = null;
+
+    if (images.length > 0) {
+      const startInterval = () => {
+          clearInterval(interval);
+          interval = setInterval(nextImage, 2000);
+      }
+      startInterval();
+    }
+
+    function nextImage() {
+      if (images.length === 0) return; 
+
+      images[currentImage]?.classList.remove('active');
+      currentImage = (currentImage + 1) % images.length;
+      images[currentImage]?.classList.add('active');
+    }
+
+    window.showImage = function(index) {
+      if (images.length === 0) return; 
+
+      clearInterval(interval);
+      images[currentImage]?.classList.remove('active');
+      currentImage = index;
+      images[currentImage]?.classList.add('active');
+    };
+
+
+    // ✅ Smoke effect (optimized)
+    let lastSmokeTime = 0;
+    const smokeDelay = 30; 
+
+    document.addEventListener("mousemove", (e) => {
+      const now = Date.now();
+      if (now - lastSmokeTime < smokeDelay) return; 
+      lastSmokeTime = now;
+
+      const smoke = document.getElementById("smoke");
+      const particle = document.createElement("div");
+      particle.className = "smoke-particle";
+
+      const size = Math.random() * 20 + 10;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+
+      particle.style.left = `${e.clientX - size / 2}px`;
+      particle.style.top = `${e.clientY - size / 2}px`;
+
+      smoke.appendChild(particle);
+
+      particle.addEventListener("animationend", () => {
+        particle.remove();
+      });
+    });
+
+
+    // ✅ Glass effects (retained)
+    const leftContent = document.querySelector('.left-splash1 .left-content1');
+    if (leftContent) {
+      leftContent.addEventListener('mousemove', e => {
+        const rect = leftContent.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        leftContent.style.setProperty('--mouse-x', x + '%');
+        leftContent.style.setProperty('--mouse-y', y + '%');
+      });
+    }
+
+    // ✅ INIT
+    navSlide();
+    experienceToggle();
+    applyButtonSounds();
+    animateExperienceItems();
+
+    // ✅ Scroll up/down nav effect (retained)
+    const nav = document.querySelector("nav");
+    let lastScroll = 0;
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll && currentScroll > 50) {
+        // Scroll down → bahagyang hide
+        nav.style.transform = 'translateY(-100%)';
+      } else {
+        // Scroll up → lumabas
+        nav.style.transform = 'translateY(0)';
+      }
+
+      lastScroll = currentScroll;
+    });
+
+});
+</script>
+
+
+</body>
+</html>
