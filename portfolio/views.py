@@ -4,20 +4,12 @@ from django.conf import settings
 from django.contrib import messages
 import threading 
 from .models import ContactMessage 
-from django.contrib.auth.models import User # <--- 1. DAGDAG ITO SA ITAAS
 
-# Home page
+# Home page - MALINIS NA VERSION
 def index(request):
-    # ===========================================================
-    # 2. DAGDAG ITONG PANSAMANTALANG CODE SA LOOB NG index
-    # ===========================================================
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'glenelldieltech@gmail.com', 'admin12345')
-    # ===========================================================
-    
     return render(request, 'index.html')
 
-# Ang contact function mo (Huwag galawin, okay na ito)
+# Contact form handler na may Database Saving at Background Email
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -25,10 +17,12 @@ def contact(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
 
+        # Siguradong naka-save ang mensahe sa Admin Panel
         ContactMessage.objects.create(
             name=name, email=email, subject=subject, message=message
         )
 
+        # Background email process para iwas 500/502 errors sa Render
         full_message = f"Message from {name} ({email}):\n\n{message}"
         email_thread = threading.Thread(
             target=send_mail,
@@ -37,6 +31,7 @@ def contact(request):
         )
         email_thread.start()
 
+        # Instant redirect sa homepage na may success message
         messages.success(request, "Thank you! Your message has been saved.")
         return redirect('/')
     return redirect('/')
