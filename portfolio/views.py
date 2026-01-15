@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect # Siguraduhing may redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
@@ -7,7 +7,7 @@ from django.contrib import messages
 def index(request):
     return render(request, 'index.html')
 
-# Contact form handler
+# Contact form handler - ITO ANG PINALITAN NATIN
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -22,25 +22,24 @@ def contact(request):
                 subject,
                 full_message,
                 settings.DEFAULT_FROM_EMAIL,  # sender
-                ['glenelldieltech@gmail.com'],     # receiver
+                ['glenelldieltech@gmail.com'], # receiver
                 fail_silently=False,
             )
             messages.success(request, "Your message has been sent successfully!")
         except Exception as e:
+            # Dito natin makikita kung ano ang error sa Gmail sa mismong website
             messages.error(request, f"Error sending message: {e}")
+            return redirect('portfolio:index')
 
-        # Render the same index page with scroll flag
-        return render(request, 'index.html', {'scroll_to_contact': True})
+        # Gagamit tayo ng redirect imbes na render para iwas error sa live
+        return redirect('portfolio:index')
 
-    # kung GET request, diretso rin sa homepage
-    return render(request, 'index.html')
+    return redirect('portfolio:index')
 
-
-# Portfolio page
+# Portfolio page at iba pa... (mananatiling pareho)
 def portfolio_page(request):
     return render(request, 'portfolio.html')
 
-# Profile page
 def profile(request):
     return render(request, 'profile.html')
 
