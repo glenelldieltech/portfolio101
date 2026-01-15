@@ -9,6 +9,8 @@ def index(request):
     return render(request, 'index.html')
 
 # FINAL FIX: Gagamit ng threading para iwas Internal Server Error
+from .models import ContactMessage # I-import ang model
+
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -16,10 +18,13 @@ def contact(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
 
-        full_message = f"Message from {name} ({email}):\n\n{message}"
+        # 1. I-SAVE SA DATABASE (Siguradong hindi ito mawawala)
+        ContactMessage.objects.create(
+            name=name, email=email, subject=subject, message=message
+        )
 
-        # Dito natin gagawin ang background task
-        # Hindi na maghihintay ang website mo kung mag-sa-success o fail ang email
+        # 2. SUBUKAN PA RIN ANG EMAIL (Background)
+        full_message = f"Message from {name} ({email}):\n\n{message}"
         email_thread = threading.Thread(
             target=send_mail,
             args=(subject, full_message, settings.DEFAULT_FROM_EMAIL, ['glenelldieltech@gmail.com']),
@@ -27,10 +32,8 @@ def contact(request):
         )
         email_thread.start()
 
-        # Agad na mag-re-redirect para hindi mag-timeout ang Render/Cloudflare
-        messages.success(request, "Thank you! Your message is being processed.")
-        return redirect('/') 
-
+        messages.success(request, "Thank you! Your message has been saved.")
+        return redirect('/')
     return redirect('/')
 
 # Panatilihin ang iyong ibang views sa ibaba
