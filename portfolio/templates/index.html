@@ -660,7 +660,7 @@
     <div class="contact-container1">
       <div class="contact-info">
        <p class="section-subtitle">Let's build something meaningful.</p>
-<h1 class="section-title">Contact Me</h1>
+       <h1 class="section-title">Contact Me</h1>
         <div class="contact-item">
           <h3 class="contact-title">Email</h3>
           <p class="contact-detail">glenelldieltech@gmail.com</p>
@@ -676,7 +676,7 @@
       </div>
 
       <div class="contact-form">
-        <form method="POST" action="{% url 'portfolio:contact' %}">
+        <form method="POST" action="/contact/">
           {% csrf_token %}
           <div class="form-group">
             <input type="text" name="name" class="form-control" placeholder="Your Name" required>
