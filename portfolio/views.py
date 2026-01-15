@@ -2,15 +2,22 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
-import threading # Importante ito para sa background task
+import threading 
+from .models import ContactMessage 
+from django.contrib.auth.models import User # <--- 1. DAGDAG ITO SA ITAAS
 
 # Home page
 def index(request):
+    # ===========================================================
+    # 2. DAGDAG ITONG PANSAMANTALANG CODE SA LOOB NG index
+    # ===========================================================
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'glenelldieltech@gmail.com', 'admin12345')
+    # ===========================================================
+    
     return render(request, 'index.html')
 
-# FINAL FIX: Gagamit ng threading para iwas Internal Server Error
-from .models import ContactMessage # I-import ang model
-
+# Ang contact function mo (Huwag galawin, okay na ito)
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -18,12 +25,10 @@ def contact(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
 
-        # 1. I-SAVE SA DATABASE (Siguradong hindi ito mawawala)
         ContactMessage.objects.create(
             name=name, email=email, subject=subject, message=message
         )
 
-        # 2. SUBUKAN PA RIN ANG EMAIL (Background)
         full_message = f"Message from {name} ({email}):\n\n{message}"
         email_thread = threading.Thread(
             target=send_mail,
@@ -36,7 +41,7 @@ def contact(request):
         return redirect('/')
     return redirect('/')
 
-# Panatilihin ang iyong ibang views sa ibaba
+# Iba pang views
 def portfolio_page(request):
     return render(request, 'portfolio.html')
 
