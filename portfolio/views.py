@@ -17,8 +17,8 @@ def contact(request):
 
         full_message = f"Message from {name} ({email}):\n\n{message}"
 
-        # Inalis natin sa loob ng try-except ang send_mail dahil fail_silently=True na ito.
-        # Ito ang teknik para hindi mag-Internal Server Error kahit mabagal ang Render network.
+        # Ang fail_silently=True ay sapat na para pigilan ang Internal Server Error
+        # Kahit blocked ang Gmail sa Render, itutuloy lang ni Django ang redirect.
         send_mail(
             subject,
             full_message,
@@ -27,7 +27,7 @@ def contact(request):
             fail_silently=True, 
         )
         
-        # Laging magpapakita ang success message para hindi mag-crash ang UI
+        # Siguraduhing babalik sa home page para hindi mag-white screen
         messages.success(request, "Your message has been sent successfully!")
         return redirect('/') 
 
