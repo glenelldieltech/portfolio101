@@ -22,7 +22,7 @@ def contact(request):
                 subject,
                 full_message,
                 settings.DEFAULT_FROM_EMAIL,  # sender
-                ['glendiel09@gmail.com'],     # receiver
+                ['glenelldieltech@gmail.com'],     # receiver
                 fail_silently=False,
             )
             messages.success(request, "Your message has been sent successfully!")
