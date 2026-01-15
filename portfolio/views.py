@@ -4,20 +4,12 @@ from django.conf import settings
 from django.contrib import messages
 import threading 
 from .models import ContactMessage 
-from django.contrib.auth.models import User # <--- Idinagdag ito para sa Admin access
 
-# Home page
+# Home page - MALINIS NA VERSION
 def index(request):
-    # ===========================================================
-    # PANSAMANTALANG CODE: Gagawa ng admin account pag-load ng page
-    # ===========================================================
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser('admin', 'glenelldieltech@gmail.com', 'admin12345')
-    # ===========================================================
-    
     return render(request, 'index.html')
 
-# Contact form handler
+# Contact form handler na may Database Saving at Background Email
 def contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -25,12 +17,12 @@ def contact(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
 
-        # I-save sa Database (Admin Panel)
+        # Siguradong naka-save ang mensahe sa Admin Panel
         ContactMessage.objects.create(
             name=name, email=email, subject=subject, message=message
         )
 
-        # Background Email Process
+        # Background email process para iwas 500/502 errors sa Render
         full_message = f"Message from {name} ({email}):\n\n{message}"
         email_thread = threading.Thread(
             target=send_mail,
@@ -39,11 +31,12 @@ def contact(request):
         )
         email_thread.start()
 
+        # Instant redirect sa homepage na may success message
         messages.success(request, "Thank you! Your message has been saved.")
         return redirect('/')
     return redirect('/')
 
-# Iba pang views
+# Iba pang views (Huwag galawin)
 def portfolio_page(request):
     return render(request, 'portfolio.html')
 
