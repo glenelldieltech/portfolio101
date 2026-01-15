@@ -136,4 +136,4 @@ EMAIL_HOST_USER = 'glendiel09@gmail.com'      # iyong Gmail
 EMAIL_HOST_PASSWORD = 'ccxnbbfkgyqsuzjn'     # Gmail App Password
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
